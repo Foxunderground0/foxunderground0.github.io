@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDirectory, "..");
+const siteUrl = "https://foxunderground0.github.io";
 const context = { window: {} };
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(siteRoot, "assets/js/data.js"), "utf8"), context);
@@ -131,6 +132,7 @@ function projectPage(project) {
   <meta name="keywords" content="${escapeHtml(project.tags.join(", "))}">
   <meta name="theme-color" content="#ffffff">
   <meta name="site-root" content="../">
+  <link rel="canonical" href="${siteUrl}/projects/${encodeURIComponent(project.id)}.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="${escapeHtml(project.title)} | Umer Irfan">
   <meta property="og:description" content="${escapeHtml(project.summary)}">
@@ -188,4 +190,20 @@ const updatedIndex = projectIndex.replace(
 );
 fs.writeFileSync(projectIndexPath, updatedIndex);
 
-console.log(`Generated ${projects.length} static project pages.`);
+const sitemapPages = [
+  `${siteUrl}/`,
+  `${siteUrl}/projects.html`,
+  ...projects.map((project) => `${siteUrl}/projects/${encodeURIComponent(project.id)}.html`)
+];
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapPages.map((url) => `  <url><loc>${escapeHtml(url)}</loc></url>`).join("\n")}
+</urlset>
+`;
+fs.writeFileSync(path.join(siteRoot, "sitemap.xml"), sitemap);
+fs.writeFileSync(
+  path.join(siteRoot, "robots.txt"),
+  `User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml\n`
+);
+
+console.log(`Generated ${projects.length} static project pages and sitemap.xml.`);

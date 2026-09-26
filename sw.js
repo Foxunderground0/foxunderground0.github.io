@@ -1,10 +1,12 @@
-const CACHE_NAME = "umer-irfan-site-v3";
+const CACHE_NAME = "umer-irfan-site-v4";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./projects.html",
   "./project.html",
   "./404.html",
+  "./robots.txt",
+  "./sitemap.xml",
   "./LICENSE",
   "./assets/css/styles.css",
   "./assets/images/profile.webp",

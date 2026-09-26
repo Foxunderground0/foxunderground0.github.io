@@ -1,44 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
   const list = document.querySelector("#project-list");
+  const entries = Array.from(list.querySelectorAll(".project-entry"));
   const count = document.querySelector("#result-count");
   const search = document.querySelector("#project-search");
   const filters = document.querySelector("#category-filters");
   const empty = document.querySelector("#empty-state");
-  const categories = ["All", ...new Set(window.PROJECTS.map((project) => project.category))];
-  const initialCategory = new URLSearchParams(window.location.search).get("category");
-  let activeCategory = categories.includes(initialCategory) ? initialCategory : "All";
-  const orderedProjects = window.PROJECTS
-    .map((project, index) => ({ project, index }))
-    .sort((a, b) => {
-      const score = (item) => {
-        const hasDocument = Boolean(item.project.documents?.length || item.project.document);
-        const hasRepository = (item.project.links || []).some((link) => link.url.includes("github.com/"));
-        return hasDocument ? 0 : hasRepository ? 1 : 2;
-      };
-      return score(a) - score(b) || a.index - b.index;
-    })
-    .map(({ project }) => project);
+  const categories = ["All", ...new Set(entries.map((entry) => entry.dataset.category))];
+  const requestedCategory = new URLSearchParams(window.location.search).get("category");
+  let activeCategory = categories.includes(requestedCategory) ? requestedCategory : "All";
 
   filters.innerHTML = categories
-    .map(
-      (category) =>
-        `<button class="filter-button${category === activeCategory ? " active" : ""}" type="button" data-category="${window.escapeHtml(category)}">${window.escapeHtml(category)}</button>`
-    )
+    .map((category) => `<button class="filter-button${category === activeCategory ? " active" : ""}" type="button" data-category="${category}">${category}</button>`)
     .join("");
 
   function render() {
     const query = search.value.trim().toLowerCase();
-    const visible = orderedProjects.filter((project) => {
-      const categoryMatch = activeCategory === "All" || project.category === activeCategory;
-      const haystack = [project.title, project.summary, project.category, project.status, ...project.tags]
-        .join(" ")
-        .toLowerCase();
-      return categoryMatch && haystack.includes(query);
-    });
+    let visibleCount = 0;
 
-    list.innerHTML = visible.map(window.projectCard).join("");
-    count.textContent = `${visible.length} project${visible.length === 1 ? "" : "s"}`;
-    empty.hidden = visible.length !== 0;
+    for (const entry of entries) {
+      const categoryMatch = activeCategory === "All" || entry.dataset.category === activeCategory;
+      const searchMatch = entry.dataset.search.includes(query);
+      entry.hidden = !(categoryMatch && searchMatch);
+      if (!entry.hidden) visibleCount += 1;
+    }
+
+    count.textContent = `${visibleCount} project${visibleCount === 1 ? "" : "s"}`;
+    empty.hidden = visibleCount !== 0;
   }
 
   filters.addEventListener("click", (event) => {
@@ -51,5 +38,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   search.addEventListener("input", render);
   render();
-  window.revealElements();
 });

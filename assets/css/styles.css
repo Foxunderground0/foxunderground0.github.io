@@ -149,6 +149,10 @@ p {
   margin: 6px 0;
 }
 
+.mobile-profile {
+  display: none;
+}
+
 .academic-main {
   min-width: 0;
   max-width: 760px;
@@ -521,33 +525,107 @@ p {
 }
 
 @media (max-width: 760px) {
+  .mobile-profile {
+    display: grid;
+    grid-template-columns: 104px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 14px;
+    padding-top: 18px;
+    padding-bottom: 14px;
+  }
+
+  .mobile-profile .profile-photo {
+    grid-column: 1;
+    grid-row: 1;
+    width: 104px;
+    height: 104px;
+    clip-path: circle(42% at 50% 49%);
+  }
+
+  .mobile-profile-copy {
+    grid-column: 2;
+  }
+
+  .mobile-profile h1 {
+    margin: 0 0 4px;
+    font-size: 23px;
+  }
+
+  .mobile-profile p {
+    margin: 0 0 4px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .mobile-profile .profile-links {
+    display: flex;
+    flex-wrap: wrap;
+    grid-column: 1 / -1;
+    gap: 2px 15px;
+    margin: 10px 0 0;
+    font-size: 13px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .mobile-profile .profile-links li {
+    margin: 0;
+  }
+
+  .site-header {
+    position: sticky;
+    z-index: 20;
+    top: 0;
+  }
+
   .nav {
     display: block;
-    padding: 14px 0;
+    width: 100%;
+    min-height: 0;
+    padding: 0;
   }
 
   .wordmark {
-    display: block;
-    margin-bottom: 8px;
+    display: none;
   }
 
   .nav-links {
-    gap: 12px 18px;
+    flex-wrap: nowrap;
+    gap: 19px;
+    padding: 11px max(12px, calc((100vw - var(--max)) / 2));
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links a {
+    flex: 0 0 auto;
+    white-space: nowrap;
   }
 
   .academic-layout {
     grid-template-columns: 1fr;
-    gap: 36px;
-    padding-top: 30px;
+    gap: 0;
+    padding-top: 24px;
   }
 
-  .profile-photo {
-    width: 180px;
-    height: 180px;
+  .academic-layout > .profile {
+    display: none;
   }
 
-  .profile {
-    max-width: 440px;
+  .academic-main {
+    width: 100%;
+    padding-bottom: 45px;
+  }
+
+  .content-section {
+    scroll-margin-top: 54px;
   }
 
   .project-entry {
@@ -575,6 +653,15 @@ p {
 
   .nav-links {
     font-size: 13px;
+  }
+
+  .mobile-profile {
+    grid-template-columns: 88px minmax(0, 1fr);
+  }
+
+  .mobile-profile .profile-photo {
+    width: 88px;
+    height: 88px;
   }
 
   .dated-list li {

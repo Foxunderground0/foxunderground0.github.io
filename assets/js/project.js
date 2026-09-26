@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const project = window.PROJECTS.find((item) => item.id === id);
   const root = document.querySelector("#project-detail");
 
+  if (project) {
+    window.location.replace(`projects/${encodeURIComponent(project.id)}.html`);
+    return;
+  }
+
   if (!project) {
     document.title = "Project not found | Umer Irfan";
     root.innerHTML = "<h1>Project not found</h1><p>This project is not in the archive.</p>";

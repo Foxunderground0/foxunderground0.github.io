@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A sensing system where the physical state change supplies the energy needed to sense and report that event.">
+  <meta name="keywords" content="Transient computing, Energy harvesting, IoT, Stress testing">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="site-root" content="../">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Motion-Coupled Sensing: When the State Change Powers Its Own Sensing | Umer Irfan">
+  <meta property="og:description" content="A sensing system where the physical state change supplies the energy needed to sense and report that event.">
+  <title>Motion-Coupled Sensing: When the State Change Powers Its Own Sensing | Umer Irfan</title>
+  <link rel="preload" href="../assets/css/styles.css" as="style">
+  <link rel="preload" href="../assets/images/profile.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script defer src="../assets/js/performance.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <aside class="mobile-profile shell" aria-label="Profile">
+  <img class="profile-photo" src="../assets/images/profile.webp" alt="Umer Irfan" width="269" height="275" decoding="async" fetchpriority="high">
+  <div class="mobile-profile-copy">
+    <h1>Umer Irfan</h1>
+    <p>Undergraduate researcher in embedded systems, hardware security, and computer architecture.</p>
+    <p>BSc Computer Science. Minor in Computer Engineering. LUMS.</p>
+  </div>
+  <ul class="profile-links">
+    <li><a href="mailto:umerirfan1205@gmail.com">Email</a></li>
+    <li><a href="https://github.com/Foxunderground0">GitHub</a></li>
+    <li><a href="https://www.linkedin.com/in/umer-irfan--">LinkedIn</a></li>
+    <li><a href="../assets/docs/Umer_Irfan_CV.pdf">CV</a></li>
+    <li><a href="../assets/docs/Umer_Irfan_Portfolio.pdf">Extended portfolio</a></li>
+  </ul>
+</aside>
+  <header class="site-header">
+  <nav class="nav shell" aria-label="Main navigation">
+    <a class="wordmark" href="../index.html">Umer Irfan</a>
+    <div class="nav-links">
+      <a href="../index.html">About</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../projects.html" aria-current="page">Projects</a>
+      <a href="../assets/docs/Umer_Irfan_Portfolio.pdf">Extended portfolio</a>
+      <a href="../assets/docs/Umer_Irfan_CV.pdf">CV</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+  <div class="academic-layout shell">
+    <aside class="profile" aria-label="Profile">
+  <img class="profile-photo" src="../assets/images/profile.webp" alt="Umer Irfan" width="269" height="275" decoding="async" fetchpriority="high">
+  <h1>Umer Irfan</h1>
+  <p>Undergraduate researcher in embedded systems, hardware security, and computer architecture.</p>
+  <p>BSc Computer Science. Minor in Computer Engineering. LUMS.</p>
+  <ul class="profile-links">
+    <li><a href="mailto:umerirfan1205@gmail.com">Email</a></li>
+    <li><a href="https://github.com/Foxunderground0">GitHub</a></li>
+    <li><a href="https://www.linkedin.com/in/umer-irfan--">LinkedIn</a></li>
+    <li><a href="../assets/docs/Umer_Irfan_CV.pdf">Curriculum vitae</a></li>
+    <li><a href="../assets/docs/Umer_Irfan_Portfolio.pdf">Extended portfolio</a></li>
+  </ul>
+</aside>
+    <main id="main" class="academic-main detail-page">
+      <p><a href="../projects.html">Back to projects</a></p>
+      <article>
+        <header class="detail-header">
+          <div class="project-title-line detail-title-line"><h1>Motion-Coupled Sensing: When the State Change Powers Its Own Sensing</h1><span class="artifact-links"><a class="artifact-icon" href="../assets/papers/Motion_Coupled_Sensing.pdf" title="PDF or writeup available" aria-label="Open PDF or writeup"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3.5"/></svg></a></span></div>
+          <p class="detail-lead">A sensing system where the physical state change supplies the energy needed to sense and report that event.</p>
+          <p class="detail-meta"><span>2026</span><span>Accepted at IEEE MASS</span><span>Research</span></p>
+          <p class="project-tags">Transient computing · Energy harvesting · IoT · Stress testing</p>
+          <p class="detail-actions"><a href="https://arxiv.org/abs/2605.19793">Read on arXiv</a> <a href="../assets/papers/Motion_Coupled_Sensing.pdf">Open local paper</a></p>
+        </header>
+        <div class="detail-copy">
+          <section><h2>Motivation</h2><p>Battery powered event sensors add maintenance and waste to systems that may remain idle for long periods. The mechanical event itself can provide the energy needed to record it.</p></section>
+          <section><h2>Work completed</h2><ul><li>Built a stepper driven stress test rig for accelerated and repeatable actuation.</li><li>Converted floating point firmware to fixed point arithmetic on an MCU without an FPU.</li><li>Byte encoded and quantized the radio payload and tuned the RA-02 LoRa settings for range within the available energy budget.</li><li>Removed the factory bootloader and designed the PCB around separation between high EMF and communication sections.</li></ul></section>
+          <section><h2>Outputs</h2><ul><li>Reduced the main program loop from 520 to 7 CPU cycles.</li><li>Reduced payload transmission time from 50 to 28 milliseconds and boot to transmission time from 1,530 to under 125 milliseconds.</li><li>The harvester transmitted after each of 10,000 accelerated actuations.</li><li>Demonstrated batteryless smart bin fill monitoring with long range cloud transmission.</li><li>The work was accepted at IEEE MASS 2026.</li></ul></section>
+          
+        </div>
+        <section class="document-section">
+  <h2>Documents</h2>
+  <ul class="document-list"><li><a href="../assets/papers/Motion_Coupled_Sensing.pdf">Motion Coupled Sensing paper</a></li><li><a href="../assets/papers/archive/Motion_Coupled_Sensing_Early_Draft.pdf">Earlier Cleanify draft</a></li></ul>
+  <iframe class="document-frame" src="../assets/papers/Motion_Coupled_Sensing.pdf" title="Motion-Coupled Sensing: When the State Change Powers Its Own Sensing document" loading="lazy"></iframe>
+</section>
+      </article>
+      <section class="content-section"><h2>Related projects</h2><div class="project-list"><article class="project-entry" data-category="Research" data-search="programmer in the middle a firmware supply chain attack that treats flash programming equipment as an untrusted stage after compilation and code review. research manuscript in preparation firmware security avr st link ghidra">
+  <div>
+    <div class="project-title-line"><h3><a href="../projects/pitm.html">PITM</a></h3><span class="artifact-links"><a class="artifact-icon" href="../assets/writeups/Programmer_in_the_Middle.pdf" title="PDF or writeup available" aria-label="Open PDF or writeup"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3.5"/></svg></a></span></div>
+    <p>A firmware supply chain attack that treats flash programming equipment as an untrusted stage after compilation and code review.</p>
+    <p class="project-tags">Firmware security · AVR · ST Link · Ghidra</p>
+  </div>
+  <div class="project-entry-meta">2026 to present<br>Research</div>
+</article>
+<article class="project-entry" data-category="Research" data-search="on chip behavioral monitoring runtime hardware trojan detection from transaction level traces of expected program behavior. research manuscript in preparation hardware security 1d cnn fpga risc v">
+  <div>
+    <div class="project-title-line"><h3><a href="../projects/on-chip-monitoring.html">On Chip Monitoring</a></h3><span class="artifact-links"><a class="artifact-icon" href="../assets/writeups/On_Chip_Behavioral_Monitoring.pdf" title="PDF or writeup available" aria-label="Open PDF or writeup"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3.5"/></svg></a></span></div>
+    <p>Runtime hardware Trojan detection from transaction level traces of expected program behavior.</p>
+    <p class="project-tags">Hardware security · 1D CNN · FPGA · RISC V</p>
+  </div>
+  <div class="project-entry-meta">2026 to present<br>Research</div>
+</article>
+<article class="project-entry" data-category="Research" data-search="keysiphon automated rsa key recovery from power rail observations of a shared embedded supply. research completed side channel rsa atmega328p 1d cnn">
+  <div>
+    <div class="project-title-line"><h3><a href="../projects/keysiphon.html">KeySiphon</a></h3><span class="artifact-links"><a class="artifact-icon" href="../assets/writeups/KeySiphon.pdf" title="PDF or writeup available" aria-label="Open PDF or writeup"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3.5"/></svg></a></span></div>
+    <p>Automated RSA key recovery from power rail observations of a shared embedded supply.</p>
+    <p class="project-tags">Side channel · RSA · ATmega328P · 1D CNN</p>
+  </div>
+  <div class="project-entry-meta">2025<br>Research</div>
+</article></div></section>
+    </main>
+  </div>
+  <footer class="footer shell"><p>Copyright Umer Irfan 2026. This website contains unpublished research content owned by Umer Irfan. Reuse requires prior written consent. <a href="../LICENSE">License</a></p></footer>
+</body>
+</html>

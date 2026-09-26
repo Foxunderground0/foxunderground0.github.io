@@ -13,7 +13,7 @@
       <article class="project-entry">
         <div>
           <div class="project-title-line">
-            <h3><a href="project.html?id=${encodeURIComponent(project.id)}">${escapeHtml(project.shortTitle || project.title)}</a></h3>
+            <h3><a href="projects/${encodeURIComponent(project.id)}.html">${escapeHtml(project.shortTitle || project.title)}</a></h3>
             ${artifactIcons(project)}
           </div>
           <p>${escapeHtml(project.summary)}</p>

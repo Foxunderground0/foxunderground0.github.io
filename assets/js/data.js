@@ -201,7 +201,7 @@ window.PROJECTS = [
   },
   {
     id: "motion-coupled",
-    title: "Motion Coupled Sensing",
+    title: "Motion-Coupled Sensing: When the State Change Powers Its Own Sensing",
     shortTitle: "Motion Coupled Sensing",
     year: "2026",
     category: "Research",
@@ -212,12 +212,15 @@ window.PROJECTS = [
     problem: "Battery powered event sensors add maintenance and waste to systems that may remain idle for long periods. The mechanical event itself can provide the energy needed to record it.",
     work: [
       "Built a stepper driven stress test rig for accelerated and repeatable actuation.",
-      "Integrated measurement and logging around the transiently powered sensing platform.",
-      "Evaluated long run mechanical and communication reliability."
+      "Converted floating point firmware to fixed point arithmetic on an MCU without an FPU.",
+      "Byte encoded and quantized the radio payload and tuned the RA-02 LoRa settings for range within the available energy budget.",
+      "Removed the factory bootloader and designed the PCB around separation between high EMF and communication sections."
     ],
     outcomes: [
+      "Reduced the main program loop from 520 to 7 CPU cycles.",
+      "Reduced payload transmission time from 50 to 28 milliseconds and boot to transmission time from 1,530 to under 125 milliseconds.",
       "The harvester transmitted after each of 10,000 accelerated actuations.",
-      "The mechanism showed no visible mechanical wear during the reported stress test.",
+      "Demonstrated batteryless smart bin fill monitoring with long range cloud transmission.",
       "The work was accepted at IEEE MASS 2026."
     ],
     links: [
@@ -233,7 +236,7 @@ window.PROJECTS = [
   },
   {
     id: "kissan-dost",
-    title: "Kissan Dost",
+    title: "Kissan-Dost: Bridging the Last Mile in Smallholder Precision Agriculture with Conversational IoT",
     shortTitle: "Kissan Dost",
     year: "2026",
     category: "Research",
@@ -245,11 +248,12 @@ window.PROJECTS = [
     work: [
       "Built the multi hop ESP NOW monitoring mesh that relayed soil and climate measurements to a gateway.",
       "Supported sensing, firmware, and field deployment at two sites.",
-      "Connected measured field conditions to a conversational interface for farmer queries."
+      "Connected measured field conditions to a multilingual WhatsApp interface supporting text and voice queries."
     ],
     outcomes: [
       "The system operated at two field sites for 45 days each.",
       "The mesh extended coverage beyond direct gateway range.",
+      "The system achieved over 90 percent correctness on sensor grounded crop queries.",
       "The work was accepted at IEEE DCOSS IoT 2026."
     ],
     links: [
@@ -483,11 +487,11 @@ window.PROJECTS = [
     problem: "The challenge required finding and validating faults in an application class RISC V system on chip.",
     work: [
       "Used Sail as an architectural reference and Verilator for RTL simulation.",
-      "Traced mismatches through the processor and memory system.",
-      "Validated fixes against architecture compatibility tests."
+      "Identified and fixed RTL bugs and traced mismatches through the processor and memory system.",
+      "Built the verification flow for the target with handwritten linker scripts, Make targets, and verification ELFs executed through Verilator."
     ],
     outcomes: [
-      "Won first place at the Pakistan Semiconductor Summit Hackathon 2026."
+      "Won first place at the Pakistan Semiconductor Summit Hackathon 2026 after a seven hour verification challenge."
     ],
     links: [
       { label: "View repository on GitHub", url: "https://github.com/Foxunderground0/Buggy-V" },

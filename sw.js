@@ -52,6 +52,7 @@ async function serveNavigation(request, url) {
 }
 
 async function serveAsset(request, url) {
+  if (request.headers.has("range")) return fetch(request);
   const cache = await caches.open(CACHE_NAME);
   const cached = await cache.match(url.href);
   if (cached) return cached;

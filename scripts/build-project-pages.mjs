@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
+import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
@@ -316,6 +317,42 @@ ${sitemapPages.map((url) => `  <url><loc>${escapeHtml(url)}</loc></url>`).join("
 </urlset>
 `;
 fs.writeFileSync(path.join(siteRoot, "sitemap.xml"), sitemap);
+const excludedPreloadPaths = new Set(media.filter((item) => item.hideFromGallery).flatMap((item) => [item.src, item.thumbnail]));
+const preloadExtensions = new Set([".html", ".webp", ".png", ".jpg", ".jpeg", ".gif", ".svg", ".mp4", ".pdf", ".pptx"]);
+function collectPreloadFiles(directory) {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const fullPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) return collectPreloadFiles(fullPath);
+    const relativePath = path.relative(siteRoot, fullPath).split(path.sep).join("/");
+    return preloadExtensions.has(path.extname(entry.name).toLowerCase()) && !excludedPreloadPaths.has(relativePath)
+      ? [relativePath]
+      : [];
+  });
+}
+const preloadFiles = collectPreloadFiles(siteRoot).sort((left, right) => {
+  const rank = (file) => file.endsWith(".mp4") ? 0 : /\.(webp|png|jpe?g|gif|svg)$/i.test(file) ? 1 : /\.(pdf|pptx)$/i.test(file) ? 2 : 3;
+  return rank(left) - rank(right) || left.localeCompare(right);
+});
+const videoStartup = media
+  .filter((item) => item.type === "video" && !item.hideFromGallery)
+  .map((item) => {
+    const videoPath = path.join(siteRoot, item.src);
+    const fileSize = fs.statSync(videoPath).size;
+    let startupBytes = Math.min(fileSize, Math.ceil(fileSize * Math.min(10, item.duration || 10) / (item.duration || 10) + 65536));
+    try {
+      const packetPositions = execFileSync("ffprobe", [
+        "-v", "error", "-read_intervals", "%+10", "-show_packets",
+        "-show_entries", "packet=pos,size", "-of", "csv=p=0", videoPath
+      ], { encoding: "utf8" });
+      const packetEnd = packetPositions.split(/\r?\n/).reduce((maxEnd, line) => {
+        const [size, position] = line.split(",").map(Number);
+        return Number.isFinite(size) && Number.isFinite(position) ? Math.max(maxEnd, size + position) : maxEnd;
+      }, 0);
+      if (packetEnd > 0) startupBytes = Math.min(fileSize, packetEnd + 65536);
+    } catch {}
+    return { url: item.src, bytes: startupBytes, size: fileSize };
+  });
+writeText(path.join(siteRoot, "preload-manifest.json"), `${JSON.stringify({ assets: preloadFiles, videoStartup }, null, 2)}\n`);
 fs.writeFileSync(
   path.join(siteRoot, "robots.txt"),
   `User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml\n`

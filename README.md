@@ -22,14 +22,14 @@ Project content is stored in `assets/js/data.js`. After editing project data, re
 node scripts/build-project-pages.mjs
 ```
 
-The critical stylesheet, profile image, and page scripts are preloaded. A service worker caches HTML, CSS, JavaScript, and the profile image after the first visit. Large PDFs remain outside the service worker cache and embedded documents load lazily.
+The service worker starts a parallel background preload on every page visit. It first caches the opening ten seconds of every video using byte ranges. It then caches complete videos, images, documents, and project pages. Cached videos support byte-range playback. The current content set is about 170 MB, so the first visit can use substantial bandwidth and storage. Cache failures are handled without blocking the page.
 
 ## Content
 
 - `index.html` contains the home page
 - `projects.html` contains search and filters
 - `projects/*.html` contains crawlable project detail pages
-- `gallery.html` contains a static photo and video collage with project filters
+- `gallery.html` contains a static photo and video gallery with project filters
 - `project.html` redirects older query string project links to the static pages
 - `assets/js/data.js` contains project content and links
 - `assets/docs` contains the CV and portfolio
@@ -37,7 +37,7 @@ The critical stylesheet, profile image, and page scripts are preloaded. A servic
 - `assets/writeups` contains public project writeups
 - `assets/media` contains compressed images, video previews, MP4 clips, and a media manifest
 
-To refresh media from the named project folders in Downloads, use `python3 scripts/import-media.py` with Pillow and FFmpeg available. This creates optimized website copies and keeps the source files intact. Then regenerate the HTML with `node scripts/build-project-pages.mjs`. Images use WebP with separate thumbnails. Videos use H.264 MP4 with a preview image and load only when opened. The media viewer supports project links, previous and next controls, arrow keys, and Escape.
+To refresh media from the named project folders in Downloads, use `python3 scripts/import-media.py` with Pillow and FFmpeg available. This creates optimized website copies and keeps the source files intact. Then regenerate the HTML with `node scripts/build-project-pages.mjs`. Images use WebP with separate thumbnails. Videos use H.264 MP4 with a preview image. The media viewer supports project links, previous and next controls, arrow keys, and Escape.
 
 Project manuscripts and writeups supplied for the website are linked from their project pages. Public papers are stored under `assets/papers`. Project manuscripts are stored under `assets/writeups`.
 

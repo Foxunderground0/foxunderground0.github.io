@@ -23,9 +23,15 @@
 
   function registerServiceWorker() {
     if (!("serviceWorker" in navigator) || window.location.protocol === "file:") return;
+    if (navigator.storage?.persist) navigator.storage.persist().catch(() => false);
     const siteRoot = document.querySelector('meta[name="site-root"]')?.content || "./";
     const serviceWorkerUrl = new URL("sw.js", new URL(siteRoot, document.baseURI));
-    navigator.serviceWorker.register(serviceWorkerUrl).catch(() => {});
+    const requestPreload = () => navigator.serviceWorker.controller?.postMessage({ type: "PRELOAD_SITE_CONTENT" });
+    navigator.serviceWorker.addEventListener("controllerchange", requestPreload);
+    navigator.serviceWorker.register(serviceWorkerUrl)
+      .then(() => navigator.serviceWorker.ready)
+      .then((registration) => registration.active?.postMessage({ type: "PRELOAD_SITE_CONTENT" }))
+      .catch(() => {});
   }
 
   function prefetchInternalPage(anchor) {
@@ -63,11 +69,5 @@
 
   document.addEventListener("DOMContentLoaded", positionBelowMobileProfile);
 
-  window.addEventListener("load", () => {
-    if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(registerServiceWorker, { timeout: 2500 });
-    } else {
-      window.setTimeout(registerServiceWorker, 750);
-    }
-  });
+  registerServiceWorker();
 })();

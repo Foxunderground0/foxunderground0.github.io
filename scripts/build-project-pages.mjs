@@ -12,6 +12,7 @@ vm.runInContext(fs.readFileSync(path.join(siteRoot, "assets/js/data.js"), "utf8"
 const projects = context.window.PROJECTS;
 const manifestPath = path.join(siteRoot, "assets/media/manifest.json");
 const media = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, "utf8")) : [];
+const galleryMedia = media.filter((item) => !item.hideFromGallery);
 
 function mediaTile(item, prefix = "") {
   const project = projects.find((project) => project.id === item.project);
@@ -19,9 +20,11 @@ function mediaTile(item, prefix = "") {
   const kind = item.type === "video" ? "Video" : "Photo";
   const caption = `${label}. ${kind} ${Number(item.id.split("-").at(-1))}.`;
   const projectUrl = project ? `${prefix}projects/${encodeURIComponent(project.id)}.html` : "";
+  const preview = item.type === "video" ? `<video class="media-hover-video" muted loop playsinline preload="none" data-video-src="${escapeHtml(localHref(item.src, prefix))}" aria-hidden="true"></video>` : "";
   return `<figure class="media-tile" data-project="${escapeHtml(item.project || "miscellaneous")}" data-type="${item.type}">
   <a class="media-open" href="${escapeHtml(localHref(item.src, prefix))}" data-media-id="${item.id}" data-type="${item.type}" data-caption="${escapeHtml(caption)}" data-label="${escapeHtml(label)}" data-project-url="${projectUrl}" data-poster="${item.poster ? escapeHtml(localHref(item.poster, prefix)) : ""}" aria-label="Open ${escapeHtml(caption)}">
-    <img src="${escapeHtml(localHref(item.thumbnail, prefix))}" width="${item.width}" height="${item.height}" alt="${escapeHtml(caption)}" loading="lazy" decoding="async">
+    <img src="${escapeHtml(localHref(item.thumbnail, prefix))}" width="${item.width}" height="${item.height}" alt="${escapeHtml(caption)}" loading="eager" decoding="async">
+    ${preview}
     ${item.type === "video" ? '<span class="video-badge" aria-hidden="true">▶ Video</span>' : ""}
     <span class="media-label">${escapeHtml(label)}</span>
   </a>
@@ -80,6 +83,7 @@ function writeText(filePath, content) {
 function artifactIcons(project, prefix = "") {
   const document = documentFor(project);
   const repository = repositoryFor(project);
+  const hasMedia = galleryMedia.some((item) => item.project === project.id);
   const icons = [];
 
   if (document) {
@@ -88,6 +92,10 @@ function artifactIcons(project, prefix = "") {
 
   if (repository) {
     icons.push(`<a class="artifact-icon" href="${escapeHtml(repository.url)}" title="Repository available" aria-label="Open repository"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3" r="1.5"/><circle cx="4" cy="13" r="1.5"/><circle cx="12" cy="6" r="1.5"/><path d="M4 4.5v7M5.5 5.5h3A3.5 3.5 0 0 0 12 2v2.5"/></svg></a>`);
+  }
+
+  if (hasMedia) {
+    icons.push(`<a class="artifact-icon" href="${prefix}gallery.html?project=${encodeURIComponent(project.id)}" title="Photos or videos available" aria-label="Open project photos and videos"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="2" width="13" height="12" rx="1"/><circle cx="5" cy="5.5" r="1.2"/><path d="m2 12 3.5-3.5 2.2 2.2 2.1-2.1L14 13"/></svg></a>`);
   }
 
   return icons.length ? `<span class="artifact-links">${icons.join("")}</span>` : "";
@@ -162,7 +170,7 @@ function projectPage(project) {
   const links = (project.links || []).map((link) => `<a href="${escapeHtml(localHref(link.url, prefix))}">${escapeHtml(link.label)}</a>`).join(" ");
   const documents = project.documents || (project.document ? [{ label: "Project document", url: project.document }] : []);
   const sources = project.sources || [];
-  const projectMedia = prioritizeVideos(media.filter((item) => item.project === project.id));
+  const projectMedia = prioritizeVideos(galleryMedia.filter((item) => item.project === project.id));
   const presentation = project.presentation;
   const presentationUrl = presentation ? `${siteUrl}/${presentation.path}` : "";
   const presentationSection = presentation ? `<section class="presentation-section" id="presentation">
@@ -224,8 +232,8 @@ function projectPage(project) {
           ${sourceSection}
         </div>
         ${presentationSection}
-        ${mediaSection}
         ${documentSection}
+        ${mediaSection}
       </article>
       ${related.length ? `<section class="content-section"><h2>Related projects</h2><div class="project-list">${related.map((item) => projectEntry(item, prefix)).join("\n")}</div></section>` : ""}
     </main>
@@ -238,9 +246,9 @@ function projectPage(project) {
 }
 
 function galleryPage() {
-  const taggedProjects = projects.filter((project) => media.some((item) => item.project === project.id));
-  const projectOrder = [...new Set(media.map((item) => item.project || "miscellaneous"))];
-  const galleryItems = projectOrder.flatMap((projectId) => prioritizeVideos(media.filter((item) => (item.project || "miscellaneous") === projectId)));
+  const taggedProjects = projects.filter((project) => galleryMedia.some((item) => item.project === project.id));
+  const projectOrder = [...new Set(galleryMedia.map((item) => item.project || "miscellaneous"))];
+  const galleryItems = projectOrder.flatMap((projectId) => prioritizeVideos(galleryMedia.filter((item) => (item.project || "miscellaneous") === projectId)));
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -268,7 +276,7 @@ function galleryPage() {
         <label for="gallery-type">Media</label>
         <select id="gallery-type"><option value="all">Photos and videos</option><option value="image">Photos</option><option value="video">Videos</option></select>
       </form>
-      <p class="gallery-count result-count" aria-live="polite">${media.length} items</p>
+      <p class="gallery-count result-count" aria-live="polite">${galleryMedia.length} items</p>
       <div class="media-grid gallery-grid">${galleryItems.map((item) => mediaTile(item)).join("\n")}</div>
       <p class="gallery-empty" hidden>No media matches these filters.</p>
     </main>

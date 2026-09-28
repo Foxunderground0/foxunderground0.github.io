@@ -250,6 +250,11 @@ p {
   contain-intrinsic-size: auto 130px;
 }
 
+.project-entry[hidden],
+#empty-state[hidden] {
+  display: none !important;
+}
+
 .project-entry h3 {
   margin: 0 0 5px;
   font-family: Arial, Helvetica, sans-serif;
@@ -607,12 +612,50 @@ p {
   display: block;
   position: relative;
   overflow: hidden;
+  z-index: 0;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  transform-origin: center;
 }
 
 .media-open img {
   display: block;
   width: 100%;
   height: auto;
+  transition: opacity 180ms ease;
+}
+
+.media-open:hover,
+.media-open:focus-visible {
+  z-index: 2;
+  transform: scale(1.035);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 22%);
+}
+
+.media-hover-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.media-tile.is-playing .media-hover-video {
+  opacity: 1;
+}
+
+.media-tile.is-playing .media-open img {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-open,
+  .media-open img,
+  .media-hover-video {
+    transition: none;
+  }
 }
 
 .media-label {

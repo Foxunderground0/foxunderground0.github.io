@@ -42,6 +42,44 @@ document.addEventListener("DOMContentLoaded", () => {
     return tiles.filter((tile) => !tile.hidden).map((tile) => tile.querySelector(".media-open"));
   }
 
+  function startPreview(tile) {
+    const video = tile.querySelector(".media-hover-video");
+    if (!video || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!video.src) {
+      video.src = video.dataset.videoSrc;
+      video.load();
+    }
+    video.play().then(() => tile.classList.add("is-playing")).catch(() => {});
+  }
+
+  function stopPreview(tile) {
+    const video = tile.querySelector(".media-hover-video");
+    if (!video) return;
+    video.pause();
+    video.currentTime = 0;
+    tile.classList.remove("is-playing");
+  }
+
+  document.addEventListener("pointerover", (event) => {
+    const tile = event.target.closest(".media-tile[data-type='video']");
+    if (event.pointerType !== "touch" && tile && !tile.contains(event.relatedTarget)) startPreview(tile);
+  });
+
+  document.addEventListener("pointerout", (event) => {
+    const tile = event.target.closest(".media-tile[data-type='video']");
+    if (tile && !tile.contains(event.relatedTarget)) stopPreview(tile);
+  });
+
+  document.addEventListener("focusin", (event) => {
+    const tile = event.target.closest(".media-tile[data-type='video']");
+    if (tile) startPreview(tile);
+  });
+
+  document.addEventListener("focusout", (event) => {
+    const tile = event.target.closest(".media-tile[data-type='video']");
+    if (tile && !tile.contains(event.relatedTarget)) stopPreview(tile);
+  });
+
   function show(link) {
     activeLink = link;
     stage.replaceChildren();

@@ -27,6 +27,7 @@ SOURCES = [
 ]
 IMAGES = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".heic"}
 VIDEOS = {".mp4", ".mov", ".mkv", ".avi", ".m4v"}
+EXCLUDED_FROM_GALLERY = {"wearables-019", "rizz8-032"}
 
 
 def run(command):
@@ -84,6 +85,7 @@ def convert(job):
         "id": stem, "project": project, "type": kind,
         "src": relative(full), "thumbnail": relative(thumb), "poster": relative(poster),
         "width": width, "height": height, "duration": round(duration, 2) if duration is not None else None,
+        "hideFromGallery": stem in EXCLUDED_FROM_GALLERY,
     }
     files = [full, thumb] + ([poster] if poster else [])
     report = {

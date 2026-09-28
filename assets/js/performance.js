@@ -38,6 +38,15 @@
       sky.append(star);
     }
 
+    for (const [x, y, delay] of [[19, 18, 3], [72, 36, 11], [88, 12, 19]]) {
+      const shootingStar = document.createElement("span");
+      shootingStar.className = "pixel-shooting-star";
+      shootingStar.style.left = `${x}%`;
+      shootingStar.style.top = `${y}%`;
+      shootingStar.style.animationDelay = `${delay}s`;
+      sky.append(shootingStar);
+    }
+
     for (const cloudClass of ["pixel-cloud-one", "pixel-cloud-two", "pixel-cloud-three"]) {
       const cloud = document.createElement("span");
       cloud.className = `pixel-cloud ${cloudClass}`;

@@ -113,12 +113,15 @@ function projectEntry(project, prefix = "") {
 </article>`;
 }
 
+const profileDescription = "Undergraduate researcher in embedded systems, hardware security, and computer architecture.";
+
 function profile(prefix) {
   return `<aside class="profile" aria-label="Profile">
   <img class="profile-photo" src="${prefix}assets/images/profile.webp" alt="Umer Irfan" width="269" height="275" decoding="async" fetchpriority="high">
   <h1>Umer Irfan</h1>
-  <p>Undergraduate researcher in embedded systems, hardware security, and computer architecture.</p>
-  <p>BSc Computer Science. Minor in Computer Engineering. LUMS.</p>
+  <p>${profileDescription}</p>
+  <p>BSc Computer Science<br>Minor in Computer Engineering<br>Lahore University of Management Sciences</p>
+  <p>Lahore, Pakistan</p>
   <ul class="profile-links">
     <li><a href="mailto:umerirfan1205@gmail.com">Email</a></li>
     <li><a href="https://github.com/Foxunderground0">GitHub</a></li>
@@ -134,7 +137,7 @@ function mobileProfile(prefix) {
   <img class="profile-photo" src="${prefix}assets/images/profile.webp" alt="Umer Irfan" width="269" height="275" decoding="async" fetchpriority="high">
   <div class="mobile-profile-copy">
     <h1>Umer Irfan</h1>
-    <p>Undergraduate researcher in embedded systems, hardware security, and computer architecture.</p>
+    <p>${profileDescription}</p>
     <p>BSc Computer Science. Minor in Computer Engineering. LUMS.</p>
   </div>
   <ul class="profile-links">
@@ -147,12 +150,24 @@ function mobileProfile(prefix) {
 </aside>`;
 }
 
+function footer(prefix = "") {
+  return `<footer class="footer shell"><p>Copyright Umer Irfan <span id="year">${new Date().getFullYear()}</span>. This website contains unpublished research content owned by Umer Irfan. Reuse requires prior written consent. <a href="${prefix}LICENSE">License</a></p></footer>`;
+}
+
+function syncPageShell(html, active = "projects") {
+  return html
+    .replace(/<aside class="profile" aria-label="Profile">[\s\S]*?<\/aside>/, profile(""))
+    .replace(/<aside class="mobile-profile shell" aria-label="Profile">[\s\S]*?<\/aside>/, mobileProfile(""))
+    .replace(/<header class="site-header">[\s\S]*?<\/header>/, navigation("", active))
+    .replace(/<footer class="footer shell">[\s\S]*?<\/footer>/, footer());
+}
+
 function navigation(prefix, active = "projects") {
   return `<header class="site-header">
   <nav class="nav shell" aria-label="Main navigation">
     <a class="wordmark" href="${prefix}index.html"><img class="nav-avatar" src="${prefix}assets/images/profile.webp" alt="" width="30" height="30"><span>Umer Irfan</span></a>
     <div class="nav-links">
-      <a href="${prefix}index.html">About</a>
+      <a href="${prefix}index.html"${active === "about" ? ' aria-current="page"' : ""}>About</a>
       <a href="${prefix}index.html#publications">Publications</a>
       <a href="${prefix}projects.html"${active === "projects" ? ' aria-current="page"' : ""}>Projects</a>
       <a href="${prefix}gallery.html"${active === "gallery" ? ' aria-current="page"' : ""}>Gallery</a>
@@ -238,7 +253,7 @@ function projectPage(project) {
       ${related.length ? `<section class="content-section"><h2>Related projects</h2><div class="project-list">${related.map((item) => projectEntry(item, prefix)).join("\n")}</div></section>` : ""}
     </main>
   </div>
-  <footer class="footer shell"><p>Copyright Umer Irfan 2026. This website contains unpublished research content owned by Umer Irfan. Reuse requires prior written consent. <a href="../LICENSE">License</a></p></footer>
+  ${footer(prefix)}
   ${projectMedia.length ? mediaDialog(prefix) : ""}
 </body>
 </html>
@@ -281,7 +296,7 @@ function galleryPage() {
       <p class="gallery-empty" hidden>No media matches these filters.</p>
     </main>
   </div>
-  <footer class="footer shell"><p>Copyright Umer Irfan 2026. This website contains unpublished research content owned by Umer Irfan. Reuse requires prior written consent. <a href="LICENSE">License</a></p></footer>
+  ${footer()}
   ${mediaDialog()}
 </body>
 </html>
@@ -301,8 +316,13 @@ const updatedIndex = projectIndex.replace(
   /<!-- PROJECT_LIST_START -->[\s\S]*<!-- PROJECT_LIST_END -->/,
   `<!-- PROJECT_LIST_START -->\n${projectList}\n        <!-- PROJECT_LIST_END -->`
 );
-writeText(projectIndexPath, updatedIndex);
+writeText(projectIndexPath, syncPageShell(updatedIndex));
 writeText(path.join(siteRoot, "gallery.html"), galleryPage());
+
+for (const name of ["index.html", "project.html"]) {
+  const filePath = path.join(siteRoot, name);
+  writeText(filePath, syncPageShell(fs.readFileSync(filePath, "utf8"), name === "index.html" ? "about" : "projects"));
+}
 
 const sitemapPages = [
   `${siteUrl}/`,

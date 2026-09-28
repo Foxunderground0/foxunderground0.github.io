@@ -22,7 +22,13 @@ body {
     linear-gradient(90deg, transparent 0 32px, #404674 32px 64px, transparent 64px) 0 64px / 96px 16px repeat-x,
     linear-gradient(90deg, #5d618a 0 48px, transparent 48px) 0 80px / 96px 16px repeat-x,
     linear-gradient(90deg, transparent 0 16px, #8889a9 16px 64px, transparent 64px) 0 96px / 96px 16px repeat-x,
-    linear-gradient(180deg, #29345f 0 64px, #3c436f 64px 80px, #555a83 80px 96px, #777a9c 96px 112px, #a8a6c2 112px 144px, #e5e4ed 144px 208px, #fff 208px) 0 0 / 100% 520px no-repeat,
+    linear-gradient(90deg, transparent 0 24px, #555a83 24px 72px, transparent 72px) 0 18vh / 96px 16px repeat-x,
+    linear-gradient(90deg, #777a9c 0 40px, transparent 40px) 0 28vh / 96px 16px repeat-x,
+    linear-gradient(90deg, transparent 0 16px, #a8a6c2 16px 64px, transparent 64px) 0 38vh / 96px 16px repeat-x,
+    linear-gradient(90deg, #d0cede 0 48px, transparent 48px) 0 52vh / 96px 16px repeat-x,
+    linear-gradient(90deg, transparent 0 32px, #e5e4ed 32px 80px, transparent 80px) 0 68vh / 96px 16px repeat-x,
+    linear-gradient(90deg, #fff 0 48px, transparent 48px) 0 84vh / 96px 16px repeat-x,
+    linear-gradient(180deg, #29345f 0 8%, #3c436f 8% 18%, #555a83 18% 28%, #777a9c 28% 38%, #a8a6c2 38% 52%, #d0cede 52% 68%, #e5e4ed 68% 84%, #fff 84% 100%) 0 0 / 100% 100vh no-repeat,
     #fff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
@@ -43,24 +49,28 @@ body {
   top: 12px;
   right: 10%;
   display: grid;
-  grid-template-columns: repeat(8, 7px);
-  grid-template-rows: repeat(8, 7px);
+  grid-template-columns: repeat(12, 5px);
+  grid-template-rows: repeat(14, 5px);
   gap: 1px;
   animation: moon-bob 6s ease-in-out infinite;
-  filter: drop-shadow(0 0 8px rgb(255 241 184 / 55%));
+  filter: drop-shadow(0 0 8px rgb(237 241 255 / 48%));
 }
 
 .pixel-moon span {
-  width: 7px;
-  height: 7px;
+  width: 5px;
+  height: 5px;
 }
 
 .pixel-moon-lit {
-  background: #fff1b8;
+  background: #f8f9ff;
 }
 
 .pixel-moon-shade {
-  background: #d5bd82;
+  background: #cbd4e8;
+}
+
+.pixel-moon-soft {
+  background: #e6eaf4;
 }
 
 .pixel-star {

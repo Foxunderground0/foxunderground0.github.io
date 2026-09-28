@@ -12,12 +12,28 @@
 
     const moon = document.createElement("span");
     moon.className = "pixel-moon";
-    const moonRows = ["..####..", ".######.", "########", "########", "########", ".######.", "..####..", "...##..."];
+    const moonRows = [
+      "....####....",
+      "..########..",
+      ".##########.",
+      "############",
+      "#######m####",
+      "#####ss#####",
+      "####ssss####",
+      "####ssss####",
+      "#####ss#####",
+      "########m###",
+      "############",
+      ".##########.",
+      "..########..",
+      "....####...."
+    ];
     for (const row of moonRows) {
       for (const pixel of row) {
         const cell = document.createElement("span");
         if (pixel === "#") cell.className = "pixel-moon-lit";
-        if (pixel === ".") cell.className = "pixel-moon-shade";
+        if (pixel === "s") cell.className = "pixel-moon-soft";
+        if (pixel === "m") cell.className = "pixel-moon-shade";
         moon.append(cell);
       }
     }
@@ -58,8 +74,12 @@
   function initStickyHeader() {
     const header = document.querySelector(".site-header");
     if (!header) return;
+    const profilePhoto = [...document.querySelectorAll(".profile-photo")].find((photo) => photo.getClientRects().length);
+    const revealAt = profilePhoto
+      ? profilePhoto.getBoundingClientRect().bottom + window.scrollY
+      : header.getBoundingClientRect().bottom + window.scrollY;
     const update = () => {
-      header.classList.toggle("is-scrolled", window.scrollY > 72);
+      header.classList.toggle("is-scrolled", window.scrollY >= revealAt);
       scrollFrame = 0;
     };
     const onScroll = () => {

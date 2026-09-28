@@ -33,7 +33,7 @@
     if (!href || href.startsWith("#") || href.endsWith(".pdf") || href === "LICENSE") return;
 
     const url = new URL(href, window.location.href);
-    if (url.origin !== window.location.origin) return;
+    if (url.origin !== window.location.origin || !/\.html$/.test(url.pathname)) return;
 
     if (prefetchedPages.has(url.href)) return;
     prefetchedPages.add(url.href);

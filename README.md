@@ -29,11 +29,15 @@ The critical stylesheet, profile image, and page scripts are preloaded. A servic
 - `index.html` contains the home page
 - `projects.html` contains search and filters
 - `projects/*.html` contains crawlable project detail pages
+- `gallery.html` contains a static photo and video collage with project filters
 - `project.html` redirects older query string project links to the static pages
 - `assets/js/data.js` contains project content and links
 - `assets/docs` contains the CV and portfolio
 - `assets/papers` contains public papers
 - `assets/writeups` contains public project writeups
+- `assets/media` contains compressed images, video previews, MP4 clips, and a media manifest
+
+To refresh media from the named project folders in Downloads, use `python3 scripts/import-media.py` with Pillow and FFmpeg available. This creates optimized website copies and keeps the source files intact. Then regenerate the HTML with `node scripts/build-project-pages.mjs`. Images use WebP with separate thumbnails. Videos use H.264 MP4 with a preview image and load only when opened. The media viewer supports project links, previous and next controls, arrow keys, and Escape.
 
 Project manuscripts and writeups supplied for the website are linked from their project pages. Public papers are stored under `assets/papers`. Project manuscripts are stored under `assets/writeups`.
 

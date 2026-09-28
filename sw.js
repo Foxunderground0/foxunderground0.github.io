@@ -1,8 +1,9 @@
-const CACHE_NAME = "umer-irfan-site-v4";
+const CACHE_NAME = "umer-irfan-site-v5";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./projects.html",
+  "./gallery.html",
   "./project.html",
   "./404.html",
   "./robots.txt",
@@ -15,6 +16,7 @@ const CORE_ASSETS = [
   "./assets/js/site.js",
   "./assets/js/projects.js",
   "./assets/js/project.js",
+  "./assets/js/media.js",
   "./assets/js/performance.js"
 ];
 
@@ -37,7 +39,7 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return;
 
   const url = new URL(request.url);
-  if (url.origin !== self.location.origin || url.pathname.toLowerCase().endsWith(".pdf")) return;
+  if (url.origin !== self.location.origin || url.pathname.toLowerCase().endsWith(".pdf") || url.pathname.includes("/assets/media/")) return;
 
   if (request.mode === "navigate") {
     event.respondWith(

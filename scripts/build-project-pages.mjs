@@ -10,6 +10,47 @@ const context = { window: {} };
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(siteRoot, "assets/js/data.js"), "utf8"), context);
 const projects = context.window.PROJECTS;
+const manifestPath = path.join(siteRoot, "assets/media/manifest.json");
+const media = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, "utf8")) : [];
+
+function mediaTile(item, prefix = "") {
+  const project = projects.find((project) => project.id === item.project);
+  const label = project?.shortTitle || project?.title || "Gallery only";
+  const kind = item.type === "video" ? "Video" : "Photo";
+  const caption = `${label}. ${kind} ${Number(item.id.split("-").at(-1))}.`;
+  const projectUrl = project ? `${prefix}projects/${encodeURIComponent(project.id)}.html` : "";
+  return `<figure class="media-tile" data-project="${escapeHtml(item.project || "miscellaneous")}" data-type="${item.type}">
+  <a class="media-open" href="${escapeHtml(localHref(item.src, prefix))}" data-media-id="${item.id}" data-type="${item.type}" data-caption="${escapeHtml(caption)}" data-label="${escapeHtml(label)}" data-project-url="${projectUrl}" data-poster="${item.poster ? escapeHtml(localHref(item.poster, prefix)) : ""}" aria-label="Open ${escapeHtml(caption)}">
+    <img src="${escapeHtml(localHref(item.thumbnail, prefix))}" width="${item.width}" height="${item.height}" alt="${escapeHtml(caption)}" loading="lazy" decoding="async">
+    ${item.type === "video" ? '<span class="video-badge" aria-hidden="true">▶ Video</span>' : ""}
+    <span class="media-label">${escapeHtml(label)}</span>
+  </a>
+  <figcaption class="visually-hidden">${escapeHtml(caption)}${project ? ` <a href="${projectUrl}">Project details</a>` : ""}</figcaption>
+</figure>`;
+}
+
+function prioritizeVideos(items) {
+  const videos = items.filter((item) => item.type === "video");
+  const images = items.filter((item) => item.type === "image");
+  const ordered = [];
+  let imageIndex = 0;
+  for (const video of videos) {
+    ordered.push(video);
+    for (let spacer = 0; spacer < 2 && imageIndex < images.length; spacer++) {
+      ordered.push(images[imageIndex++]);
+    }
+  }
+  ordered.push(...images.slice(imageIndex));
+  return ordered;
+}
+
+function mediaDialog() {
+  return `<dialog class="media-viewer" aria-label="Media viewer">
+  <div class="viewer-header"><p class="viewer-caption"></p><button class="viewer-close" type="button" aria-label="Close media viewer">Close</button></div>
+  <div class="viewer-stage"></div>
+  <div class="viewer-footer"><button class="viewer-prev" type="button" aria-label="Previous media">Previous</button><a class="viewer-project" href="projects.html">Project details</a><button class="viewer-next" type="button" aria-label="Next media">Next</button></div>
+</dialog>`;
+}
 
 function escapeHtml(value) {
   return String(value)
@@ -30,6 +71,10 @@ function documentFor(project) {
 
 function repositoryFor(project) {
   return (project.links || []).find((link) => link.url.includes("github.com/"));
+}
+
+function writeText(filePath, content) {
+  fs.writeFileSync(filePath, content.replace(/[\t ]+$/gm, ""));
 }
 
 function artifactIcons(project, prefix = "") {
@@ -56,7 +101,7 @@ function projectEntry(project, prefix = "") {
     <p>${escapeHtml(project.summary)}</p>
     <p class="project-tags">${project.tags.slice(0, 4).map(escapeHtml).join(" · ")}</p>
   </div>
-  <div class="project-entry-meta">${escapeHtml(project.year)}<br>${escapeHtml(project.category)}</div>
+  <div class="project-entry-meta">${project.year ? `${escapeHtml(project.year)}<br>` : ""}${escapeHtml(project.category)}</div>
 </article>`;
 }
 
@@ -94,14 +139,15 @@ function mobileProfile(prefix) {
 </aside>`;
 }
 
-function navigation(prefix) {
+function navigation(prefix, active = "projects") {
   return `<header class="site-header">
   <nav class="nav shell" aria-label="Main navigation">
     <a class="wordmark" href="${prefix}index.html">Umer Irfan</a>
     <div class="nav-links">
       <a href="${prefix}index.html">About</a>
       <a href="${prefix}index.html#publications">Publications</a>
-      <a href="${prefix}projects.html" aria-current="page">Projects</a>
+      <a href="${prefix}projects.html"${active === "projects" ? ' aria-current="page"' : ""}>Projects</a>
+      <a href="${prefix}gallery.html"${active === "gallery" ? ' aria-current="page"' : ""}>Gallery</a>
       <a href="${prefix}assets/docs/Umer_Irfan_Portfolio.pdf">Extended portfolio</a>
       <a href="${prefix}assets/docs/Umer_Irfan_CV.pdf">CV</a>
       <a href="${prefix}index.html#contact">Contact</a>
@@ -116,6 +162,18 @@ function projectPage(project) {
   const links = (project.links || []).map((link) => `<a href="${escapeHtml(localHref(link.url, prefix))}">${escapeHtml(link.label)}</a>`).join(" ");
   const documents = project.documents || (project.document ? [{ label: "Project document", url: project.document }] : []);
   const sources = project.sources || [];
+  const projectMedia = prioritizeVideos(media.filter((item) => item.project === project.id));
+  const presentation = project.presentation;
+  const presentationUrl = presentation ? `${siteUrl}/${presentation.path}` : "";
+  const presentationSection = presentation ? `<section class="presentation-section" id="presentation">
+  <h2>Presentation</h2>
+  <p><a href="${escapeHtml(presentation.path)}" target="_blank" rel="noopener">Open ${escapeHtml(presentation.label)} in PowerPoint for the web</a> · <a href="${escapeHtml(presentation.path)}" download>Download PowerPoint file</a></p>
+  <iframe class="presentation-frame" src="https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(presentationUrl)}" title="${escapeHtml(presentation.label)}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>` : "";
+  const mediaSection = projectMedia.length ? `<section class="media-section" id="media">
+  <div class="section-heading"><h2>Photos and videos</h2><a href="../gallery.html?project=${encodeURIComponent(project.id)}">Gallery</a></div>
+  <div class="media-grid project-media">${projectMedia.map((item) => mediaTile(item, prefix)).join("\n")}</div>
+</section>` : "";
   const documentSection = documents.length ? `<section class="document-section">
   <h2>Documents</h2>
   <ul class="document-list">${documents.map((document) => `<li><a href="${escapeHtml(localHref(document.url, prefix))}">${escapeHtml(document.label)}</a></li>`).join("")}</ul>
@@ -141,6 +199,7 @@ function projectPage(project) {
   <link rel="preload" href="../assets/images/profile.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="../assets/css/styles.css">
   <script defer src="../assets/js/performance.js"></script>
+  ${projectMedia.length ? '<script defer src="../assets/js/media.js"></script>' : ""}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -154,7 +213,7 @@ function projectPage(project) {
         <header class="detail-header">
           <div class="project-title-line detail-title-line"><h1>${escapeHtml(project.title)}</h1>${artifactIcons(project, prefix)}</div>
           <p class="detail-lead">${escapeHtml(project.summary)}</p>
-          <p class="detail-meta"><span>${escapeHtml(project.year)}</span><span>${escapeHtml(project.status)}</span><span>${escapeHtml(project.category)}</span></p>
+          <p class="detail-meta">${[project.year, project.status, project.category].filter(Boolean).map((value) => `<span>${escapeHtml(value)}</span>`).join("")}</p>
           <p class="project-tags">${project.tags.map(escapeHtml).join(" · ")}</p>
           ${links ? `<p class="detail-actions">${links}</p>` : ""}
         </header>
@@ -164,12 +223,58 @@ function projectPage(project) {
           <section><h2>Outputs</h2><ul>${project.outcomes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
           ${sourceSection}
         </div>
+        ${presentationSection}
+        ${mediaSection}
         ${documentSection}
       </article>
       ${related.length ? `<section class="content-section"><h2>Related projects</h2><div class="project-list">${related.map((item) => projectEntry(item, prefix)).join("\n")}</div></section>` : ""}
     </main>
   </div>
   <footer class="footer shell"><p>Copyright Umer Irfan 2026. This website contains unpublished research content owned by Umer Irfan. Reuse requires prior written consent. <a href="../LICENSE">License</a></p></footer>
+  ${projectMedia.length ? mediaDialog() : ""}
+</body>
+</html>
+`;
+}
+
+function galleryPage() {
+  const taggedProjects = projects.filter((project) => media.some((item) => item.project === project.id));
+  const projectOrder = [...new Set(media.map((item) => item.project || "miscellaneous"))];
+  const galleryItems = projectOrder.flatMap((projectId) => prioritizeVideos(media.filter((item) => (item.project || "miscellaneous") === projectId)));
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Project photos and videos from Umer Irfan. Research, hardware, teaching, and freelance work.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="${siteUrl}/gallery.html">
+  <title>Gallery | Umer Irfan</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer src="assets/js/media.js"></script>
+  <script defer src="assets/js/performance.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  ${mobileProfile("")}
+  ${navigation("", "gallery")}
+  <div class="academic-layout shell">
+    ${profile("")}
+    <main id="main" class="academic-main gallery-page">
+      <header class="page-header"><h2>Gallery</h2><p>Photos and videos from research, hardware, teaching, and freelance work.</p></header>
+      <form class="gallery-controls" aria-label="Gallery filters">
+        <label for="gallery-project">Project</label>
+        <select id="gallery-project"><option value="all">All projects</option>${taggedProjects.map((project) => `<option value="${project.id}">${escapeHtml(project.shortTitle || project.title)}</option>`).join("")}<option value="miscellaneous">Gallery only</option></select>
+        <label for="gallery-type">Media</label>
+        <select id="gallery-type"><option value="all">Photos and videos</option><option value="image">Photos</option><option value="video">Videos</option></select>
+      </form>
+      <p class="gallery-count result-count" aria-live="polite">${media.length} items</p>
+      <div class="media-grid gallery-grid">${galleryItems.map((item) => mediaTile(item)).join("\n")}</div>
+      <p class="gallery-empty" hidden>No media matches these filters.</p>
+    </main>
+  </div>
+  <footer class="footer shell"><p>Copyright Umer Irfan 2026. This website contains unpublished research content owned by Umer Irfan. Reuse requires prior written consent. <a href="LICENSE">License</a></p></footer>
+  ${mediaDialog()}
 </body>
 </html>
 `;
@@ -178,7 +283,7 @@ function projectPage(project) {
 const outputDirectory = path.join(siteRoot, "projects");
 fs.mkdirSync(outputDirectory, { recursive: true });
 for (const project of projects) {
-  fs.writeFileSync(path.join(outputDirectory, `${project.id}.html`), projectPage(project));
+  writeText(path.join(outputDirectory, `${project.id}.html`), projectPage(project));
 }
 
 const projectIndexPath = path.join(siteRoot, "projects.html");
@@ -188,11 +293,13 @@ const updatedIndex = projectIndex.replace(
   /<!-- PROJECT_LIST_START -->[\s\S]*<!-- PROJECT_LIST_END -->/,
   `<!-- PROJECT_LIST_START -->\n${projectList}\n        <!-- PROJECT_LIST_END -->`
 );
-fs.writeFileSync(projectIndexPath, updatedIndex);
+writeText(projectIndexPath, updatedIndex);
+writeText(path.join(siteRoot, "gallery.html"), galleryPage());
 
 const sitemapPages = [
   `${siteUrl}/`,
   `${siteUrl}/projects.html`,
+  `${siteUrl}/gallery.html`,
   ...projects.map((project) => `${siteUrl}/projects/${encodeURIComponent(project.id)}.html`)
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

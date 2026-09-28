@@ -16,6 +16,7 @@
   <link rel="preload" href="../assets/images/profile.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="../assets/css/styles.css">
   <script defer src="../assets/js/performance.js"></script>
+
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -41,6 +42,7 @@
       <a href="../index.html">About</a>
       <a href="../index.html#publications">Publications</a>
       <a href="../projects.html" aria-current="page">Projects</a>
+      <a href="../gallery.html">Gallery</a>
       <a href="../assets/docs/Umer_Irfan_Portfolio.pdf">Extended portfolio</a>
       <a href="../assets/docs/Umer_Irfan_CV.pdf">CV</a>
       <a href="../index.html#contact">Contact</a>
@@ -69,15 +71,17 @@
           <p class="detail-lead">A codec for noisy 16 bit thermal camera streams using temporal predictors and sensor noise structure.</p>
           <p class="detail-meta"><span>2025 to 2026</span><span>Research prototype</span><span>Systems</span></p>
           <p class="project-tags">Lossless compression · Thermal imaging · 16 bit video · Temporal prediction</p>
-          
+
         </header>
         <div class="detail-copy">
           <section><h2>Motivation</h2><p>General lossless codecs do not fully exploit the temporal behavior and noise patterns of raw thermal camera data.</p></section>
           <section><h2>Work completed</h2><ul><li>Designed temporal predictors around thermal scene continuity.</li><li>Modeled camera noise patterns to avoid spending bits on predictable sensor behavior.</li><li>Benchmarked encode and decode cost against FFV1 across recorded datasets.</li></ul></section>
           <section><h2>Outputs</h2><ul><li>Produced files 15 percent smaller than FFV1 on average at similar encode and decode cost.</li><li>Recorded no regression against FFV1 across the tested sets.</li><li>Reached a best case size reduction of three fold.</li></ul></section>
-          
+
         </div>
-        
+
+
+
       </article>
       <section class="content-section"><h2>Related projects</h2><div class="project-list"><article class="project-entry" data-category="Systems" data-search="raspberry pi kernel driver a linux i2c kernel module with a userspace device interface for high rate sensor sampling. systems completed linux kernel i2c mpu6050 c">
   <div>
@@ -98,5 +102,6 @@
     </main>
   </div>
   <footer class="footer shell"><p>Copyright Umer Irfan 2026. This website contains unpublished research content owned by Umer Irfan. Reuse requires prior written consent. <a href="../LICENSE">License</a></p></footer>
+
 </body>
 </html>

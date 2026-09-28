@@ -376,6 +376,118 @@ window.PROJECTS = [
     sources: []
   },
   {
+    id: "voltage-trace-bench",
+    title: "Arbitrary Voltage Trace Replay Bench",
+    shortTitle: "Voltage Trace Replay Bench",
+    year: "2024",
+    category: "Research",
+    status: "SYSNET laboratory infrastructure",
+    featured: false,
+    tags: ["Transient computing", "Instrumentation", "Function generators", "Power measurement"],
+    summary: "A digitally controlled bench for replaying recorded voltage traces to test transiently powered electronics.",
+    problem: "Intermittent computing systems need repeatable power conditions to compare behavior under the same energy supply.",
+    work: [
+      "Built a laptop controlled setup to replay arbitrary recorded voltage traces.",
+      "Combined function generators and amplifiers to supply transiently powered electronics.",
+      "Used the setup to measure device behavior under repeatable voltage profiles during SYSNET research."
+    ],
+    outcomes: [
+      "Created experimental infrastructure for evaluating transiently powered systems.",
+      "Supported laboratory experiments including the CheckMate project."
+    ],
+    links: [{ label: "SYSNET Lab", url: "https://sysnet.lums.edu.pk/" }],
+    sources: []
+  },
+  {
+    id: "wit-long-range",
+    title: "WIT Summer Internship",
+    shortTitle: "WIT Summer Internship",
+    year: "2025",
+    category: "Research",
+    status: "Completed internship",
+    featured: false,
+    tags: ["ESP32", "ESP NOW", "Soil monitoring", "Low power"],
+    summary: "ESP32 radio and power characterization for long term soil monitoring at WIT LUMS.",
+    problem: "Distributed soil sensors need affordable wireless links and low energy use to operate across field sites with limited maintenance.",
+    work: [
+      "Evaluated ESP NOW as a communication option for soil monitoring nodes during a summer internship.",
+      "Characterized boot and transmission current using laboratory instruments.",
+      "Modified development board hardware and optimized firmware clock domains and sleep behavior.",
+      "Tested long range communication in a semiurban environment."
+    ],
+    outcomes: [
+      "Demonstrated communication over at least 500 metres with mild obstructions.",
+      "Measured approximately 8.8 microamps in the optimized sleep configuration.",
+      "Documented the feasibility study and experimental measurements in an internship presentation."
+    ],
+    presentation: {
+      label: "WIT ESP NOW soil monitoring presentation",
+      path: "assets/presentations/WIT_Summer_Internship.pptx"
+    },
+    links: [{ label: "Centre for Water Informatics and Technology at LUMS", url: "https://wit.lums.edu.pk/" }],
+    sources: []
+  },
+  {
+    id: "robot-path-tracking",
+    title: "Robot Path Tracking and Planning",
+    shortTitle: "Robot Path Tracking",
+    year: "2024",
+    category: "Hardware",
+    status: "PSIFI competition setup",
+    featured: false,
+    tags: ["Robotics", "Path planning", "Line tracking", "PSIFI"],
+    summary: "A physical grid course and dynamic path planning demonstration for the PSIFI line following robot competition.",
+    problem: "A robot competition needs a repeatable course for testing how robots follow lines and navigate routes.",
+    work: [
+      "Prepared a physical grid based course for the line following robot competition.",
+      "Developed a dynamic path finding demonstration and visualized routes across the course."
+    ],
+    outcomes: [
+      "Produced a competition course and a software route demonstration.",
+      "Connected physical path tracking with visual route planning for the PSIFI event."
+    ],
+    links: [],
+    sources: []
+  },
+  {
+    id: "summer-school-iot",
+    title: "Summer School IoT Demonstration",
+    shortTitle: "Summer School IoT",
+    year: "2024",
+    category: "Teaching",
+    status: "LUMS Summer School",
+    featured: false,
+    tags: ["IoT", "Smart switch", "Teaching", "Embedded systems"],
+    summary: "A smart switch demonstration used to teach IoT to children at LUMS Summer School.",
+    problem: "A live demonstration makes the link between software and physical devices easier to explain to students learning IoT.",
+    work: [
+      "Built and demonstrated a smart switch during the summer between my freshman and sophomore years.",
+      "Used a working lamp control setup to explain connected devices and IoT to children."
+    ],
+    outcomes: ["Provided a physical demonstration for the summer school teaching sessions."],
+    links: [{ label: "LUMS Summer School", url: "https://summer.lums.edu.pk/" }],
+    sources: []
+  },
+  {
+    id: "chassis-modeling",
+    title: "Vehicle Chassis Modeling",
+    shortTitle: "Chassis Modeling",
+    year: "",
+    category: "Hardware",
+    status: "Freelance project",
+    featured: false,
+    tags: ["3D CAD", "Mechanical design", "Chassis", "Modeling"],
+    summary: "Freelance 3D modeling of a vehicle chassis and its mechanical parts.",
+    problem: "A chassis design needs a clear model of its frame and component geometry before the design can be reviewed.",
+    work: [
+      "Modeled the chassis frame and individual mechanical parts in 3D CAD.",
+      "Prepared renders and an animation to show the design."
+    ],
+    outcomes: ["Produced a set of chassis design models and visualizations for freelance work."],
+    links: [],
+    sources: []
+  },
+  {
     id: "thermal-codec",
     title: "Lossless Thermal Video Codec",
     shortTitle: "Thermal Codec",

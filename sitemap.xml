@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://foxunderground0.github.io/</loc></url>
   <url><loc>https://foxunderground0.github.io/projects.html</loc></url>
+  <url><loc>https://foxunderground0.github.io/gallery.html</loc></url>
   <url><loc>https://foxunderground0.github.io/projects/pitm.html</loc></url>
   <url><loc>https://foxunderground0.github.io/projects/on-chip-monitoring.html</loc></url>
   <url><loc>https://foxunderground0.github.io/projects/pixelpacker.html</loc></url>
@@ -15,6 +16,11 @@
   <url><loc>https://foxunderground0.github.io/projects/parda.html</loc></url>
   <url><loc>https://foxunderground0.github.io/projects/imd-security.html</loc></url>
   <url><loc>https://foxunderground0.github.io/projects/wristband.html</loc></url>
+  <url><loc>https://foxunderground0.github.io/projects/voltage-trace-bench.html</loc></url>
+  <url><loc>https://foxunderground0.github.io/projects/wit-long-range.html</loc></url>
+  <url><loc>https://foxunderground0.github.io/projects/robot-path-tracking.html</loc></url>
+  <url><loc>https://foxunderground0.github.io/projects/summer-school-iot.html</loc></url>
+  <url><loc>https://foxunderground0.github.io/projects/chassis-modeling.html</loc></url>
   <url><loc>https://foxunderground0.github.io/projects/thermal-codec.html</loc></url>
   <url><loc>https://foxunderground0.github.io/projects/kernel-driver.html</loc></url>
   <url><loc>https://foxunderground0.github.io/projects/knock-detector.html</loc></url>

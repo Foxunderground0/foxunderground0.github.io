@@ -2,6 +2,63 @@
   const mobileRouteKey = "hide-profile-on-next-page";
   let prefetchTimer = null;
   let pendingPrefetchUrl = null;
+  let scrollFrame = 0;
+
+  function initSkyScene() {
+    if (document.querySelector(".pixel-sky")) return;
+    const sky = document.createElement("div");
+    sky.className = "pixel-sky";
+    sky.setAttribute("aria-hidden", "true");
+
+    const moon = document.createElement("span");
+    moon.className = "pixel-moon";
+    const moonRows = ["..####..", ".######.", "########", "########", "########", ".######.", "..####..", "...##..."];
+    for (const row of moonRows) {
+      for (const pixel of row) {
+        const cell = document.createElement("span");
+        if (pixel === "#") cell.className = "pixel-moon-lit";
+        if (pixel === ".") cell.className = "pixel-moon-shade";
+        moon.append(cell);
+      }
+    }
+    sky.append(moon);
+
+    const starPositions = [
+      [5, 24], [11, 66], [17, 17], [23, 48], [29, 78], [35, 29],
+      [41, 62], [47, 13], [53, 42], [59, 76], [65, 24], [71, 57],
+      [77, 14], [83, 72], [89, 38], [95, 63], [8, 42], [38, 84],
+      [68, 86], [91, 15]
+    ];
+    for (const [x, y] of starPositions) {
+      const star = document.createElement("span");
+      star.className = "pixel-star";
+      star.style.left = `${x}%`;
+      star.style.top = `${y}%`;
+      star.style.animationDelay = `${((x * 7 + y * 3) % 29) / 10}s`;
+      sky.append(star);
+    }
+
+    for (const cloudClass of ["pixel-cloud-one", "pixel-cloud-two", "pixel-cloud-three"]) {
+      const cloud = document.createElement("span");
+      cloud.className = `pixel-cloud ${cloudClass}`;
+      sky.append(cloud);
+    }
+    document.body.insertBefore(sky, document.body.firstChild);
+  }
+
+  function initStickyHeader() {
+    const header = document.querySelector(".site-header");
+    if (!header) return;
+    const update = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 72);
+      scrollFrame = 0;
+    };
+    const onScroll = () => {
+      if (!scrollFrame) scrollFrame = window.requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+  }
 
   function isMobileLayout() {
     return window.matchMedia("(max-width: 760px)").matches;
@@ -82,5 +139,7 @@
 
   document.addEventListener("DOMContentLoaded", positionBelowMobileProfile);
 
+  initSkyScene();
+  initStickyHeader();
   registerServiceWorker();
 })();

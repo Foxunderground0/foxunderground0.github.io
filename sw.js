@@ -1,4 +1,4 @@
-const CACHE_NAME = "umer-irfan-site-v10";
+const CACHE_NAME = "umer-irfan-site-v11";
 const CORE_ASSETS = ["./assets/css/styles.css", "./assets/js/performance.js"];
 let speculativePage = null;
 

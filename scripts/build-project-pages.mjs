@@ -150,7 +150,7 @@ function mobileProfile(prefix) {
 function navigation(prefix, active = "projects") {
   return `<header class="site-header">
   <nav class="nav shell" aria-label="Main navigation">
-    <a class="wordmark" href="${prefix}index.html">Umer Irfan</a>
+    <a class="wordmark" href="${prefix}index.html"><img class="nav-avatar" src="${prefix}assets/images/profile.webp" alt="" width="30" height="30"><span>Umer Irfan</span></a>
     <div class="nav-links">
       <a href="${prefix}index.html">About</a>
       <a href="${prefix}index.html#publications">Publications</a>

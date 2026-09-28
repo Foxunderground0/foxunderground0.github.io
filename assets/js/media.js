@@ -115,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const link = event.target.closest(".media-open");
     if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || typeof viewer.showModal !== "function") return;
     event.preventDefault();
+    stopPreview(link.closest(".media-tile"));
     show(link);
   });
   viewer.querySelector(".viewer-close").addEventListener("click", () => viewer.close());

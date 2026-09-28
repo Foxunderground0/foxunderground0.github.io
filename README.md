@@ -22,7 +22,7 @@ Project content is stored in `assets/js/data.js`. After editing project data, re
 node scripts/build-project-pages.mjs
 ```
 
-The service worker starts a parallel background preload on every page visit. It first caches the opening ten seconds of every video using byte ranges. It then caches complete videos, images, documents, and project pages. Cached videos support byte-range playback. The current content set is about 170 MB, so the first visit can use substantial bandwidth and storage. Cache failures are handled without blocking the page.
+The service worker keeps only the small site shell in its cache. It prefetches at most one HTML page after a visitor hovers over a same-site link for 250 ms. Leaving the link or clicking cancels that request. It does not fetch a page's images, videos, PDFs, or other media speculatively. Gallery thumbnails load as they approach the viewport. Videos stream directly when previewed or opened and are never copied into the service worker cache.
 
 ## Content
 
@@ -40,5 +40,7 @@ The service worker starts a parallel background preload on every page visit. It 
 To refresh media from the named project folders in Downloads, use `python3 scripts/import-media.py` with Pillow and FFmpeg available. This creates optimized website copies and keeps the source files intact. Then regenerate the HTML with `node scripts/build-project-pages.mjs`. Images use WebP with separate thumbnails. Videos use H.264 MP4 with a preview image. The media viewer supports project links, previous and next controls, arrow keys, and Escape.
 
 Project manuscripts and writeups supplied for the website are linked from their project pages. Public papers are stored under `assets/papers`. Project manuscripts are stored under `assets/writeups`.
+
+The service worker caches the small site shell and prefetches at most one HTML page after a same site link is hovered for 250 ms. It cancels that request when the pointer leaves or a link is clicked. It does not prefetch page media. Gallery thumbnails load lazily near the viewport. Videos bypass the service worker cache and stream directly when previewed or opened.
 
 The website and its contents are distributed under the all rights reserved terms in `LICENSE`.

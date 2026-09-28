@@ -1,6 +1,7 @@
 (function () {
-  const prefetchedPages = new Set();
   const mobileRouteKey = "hide-profile-on-next-page";
+  let prefetchTimer = null;
+  let pendingPrefetchUrl = null;
 
   function isMobileLayout() {
     return window.matchMedia("(max-width: 760px)").matches;
@@ -10,6 +11,7 @@
     const href = anchor.getAttribute("href");
     if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.endsWith(".pdf") || href === "LICENSE") return false;
     const url = new URL(href, window.location.href);
+    url.hash = "";
     return url.origin === window.location.origin && /\.html$/.test(url.pathname);
   }
 
@@ -23,14 +25,9 @@
 
   function registerServiceWorker() {
     if (!("serviceWorker" in navigator) || window.location.protocol === "file:") return;
-    if (navigator.storage?.persist) navigator.storage.persist().catch(() => false);
     const siteRoot = document.querySelector('meta[name="site-root"]')?.content || "./";
     const serviceWorkerUrl = new URL("sw.js", new URL(siteRoot, document.baseURI));
-    const requestPreload = () => navigator.serviceWorker.controller?.postMessage({ type: "PRELOAD_SITE_CONTENT" });
-    navigator.serviceWorker.addEventListener("controllerchange", requestPreload);
     navigator.serviceWorker.register(serviceWorkerUrl)
-      .then(() => navigator.serviceWorker.ready)
-      .then((registration) => registration.active?.postMessage({ type: "PRELOAD_SITE_CONTENT" }))
       .catch(() => {});
   }
 
@@ -39,16 +36,21 @@
     if (!href || href.startsWith("#") || href.endsWith(".pdf") || href === "LICENSE") return;
 
     const url = new URL(href, window.location.href);
-    if (url.origin !== window.location.origin || !/\.html$/.test(url.pathname)) return;
+    if (url.origin !== window.location.origin || !/\.html$/.test(url.pathname) || url.pathname === window.location.pathname) return;
+    if (pendingPrefetchUrl === url.href) return;
+    cancelPrefetch();
+    pendingPrefetchUrl = url.href;
+    prefetchTimer = window.setTimeout(() => {
+      navigator.serviceWorker.controller?.postMessage({ type: "PREFETCH_PAGE", url: url.href });
+      prefetchTimer = null;
+    }, 250);
+  }
 
-    if (prefetchedPages.has(url.href)) return;
-    prefetchedPages.add(url.href);
-
-    const prefetch = document.createElement("link");
-    prefetch.rel = "prefetch";
-    prefetch.as = "document";
-    prefetch.href = href;
-    document.head.append(prefetch);
+  function cancelPrefetch() {
+    if (prefetchTimer !== null) window.clearTimeout(prefetchTimer);
+    prefetchTimer = null;
+    if (pendingPrefetchUrl) navigator.serviceWorker.controller?.postMessage({ type: "CANCEL_PREFETCH", url: pendingPrefetchUrl });
+    pendingPrefetchUrl = null;
   }
 
   document.addEventListener("pointerover", (event) => {
@@ -56,15 +58,26 @@
     if (anchor) prefetchInternalPage(anchor);
   }, { passive: true });
 
+  document.addEventListener("pointerout", (event) => {
+    const anchor = event.target.closest("a[href]");
+    if (anchor && !anchor.contains(event.relatedTarget)) cancelPrefetch();
+  }, { passive: true });
+
   document.addEventListener("focusin", (event) => {
     const anchor = event.target.closest("a[href]");
     if (anchor) prefetchInternalPage(anchor);
   });
 
-  document.addEventListener("click", (event) => {
-    if (!isMobileLayout() || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  document.addEventListener("focusout", (event) => {
     const anchor = event.target.closest("a[href]");
-    if (anchor && isInternalPageLink(anchor)) sessionStorage.setItem(mobileRouteKey, "1");
+    if (anchor && !anchor.contains(event.relatedTarget)) cancelPrefetch();
+  });
+
+  document.addEventListener("click", (event) => {
+    const anchor = event.target.closest("a[href]");
+    if (!anchor || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    cancelPrefetch();
+    if (isMobileLayout() && isInternalPageLink(anchor)) sessionStorage.setItem(mobileRouteKey, "1");
   });
 
   document.addEventListener("DOMContentLoaded", positionBelowMobileProfile);

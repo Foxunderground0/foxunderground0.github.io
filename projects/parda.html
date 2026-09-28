@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="On device audio privacy for smart glasses using compact language models.">
+  <meta name="description" content="Context aware audio redaction and voice replacement for smart glasses using a compact on device language model.">
   <meta name="keywords" content="Audio privacy, Smart glasses, On device AI, Small language models">
   <meta name="theme-color" content="#ffffff">
   <meta name="site-root" content="../">
   <link rel="canonical" href="https://foxunderground0.github.io/projects/parda.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="PARDA | Umer Irfan">
-  <meta property="og:description" content="On device audio privacy for smart glasses using compact language models.">
+  <meta property="og:description" content="Context aware audio redaction and voice replacement for smart glasses using a compact on device language model.">
   <title>PARDA | Umer Irfan</title>
   <link rel="preload" href="../assets/css/styles.css" as="style">
   <link rel="preload" href="../assets/images/profile.webp" as="image" type="image/webp" fetchpriority="high">
@@ -68,15 +68,15 @@
       <article>
         <header class="detail-header">
           <div class="project-title-line detail-title-line"><h1>PARDA</h1><span class="artifact-links"><a class="artifact-icon" href="../assets/writeups/PARDA.pdf" title="PDF or writeup available" aria-label="Open PDF or writeup"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3.5"/></svg></a></span></div>
-          <p class="detail-lead">On device audio privacy for smart glasses using compact language models.</p>
+          <p class="detail-lead">Context aware audio redaction and voice replacement for smart glasses using a compact on device language model.</p>
           <p class="detail-meta"><span>2026</span><span>Submitted manuscript</span><span>Research</span></p>
           <p class="project-tags">Audio privacy · Smart glasses · On device AI · Small language models</p>
           <p class="detail-actions"><a href="../assets/writeups/PARDA.pdf">Open submitted manuscript</a></p>
         </header>
         <div class="detail-copy">
-          <section><h2>Motivation</h2><p>Always available audio interfaces can capture speech that should not leave the device. Privacy decisions also need enough context to preserve useful interaction.</p></section>
-          <section><h2>Work completed</h2><ul><li>Built an on device pipeline for detecting and transforming privacy sensitive spoken content.</li><li>Evaluated compact language models under the memory and latency limits of wearable hardware.</li><li>Designed the system around local processing before any external transmission.</li></ul></section>
-          <section><h2>Outputs</h2><ul><li>Produced a first author manuscript submitted to IEEE PerCom 2027.</li><li>Evaluated the on device pipeline across privacy and utility objectives.</li></ul></section>
+          <section><h2>Motivation</h2><p>Smart glasses can reveal bystander identity and private attributes inferred across conversation turns. Local processing must protect that information while retaining useful conversation content.</p></section>
+          <section><h2>Work completed</h2><ul><li>Designed context aware redaction and voice replacement for bystander audio.</li><li>Labeled 717 CANDOR conversations and combined speaker profiles with retrieval and a distilled 2B model trained through preference optimization.</li><li>Deployed Q4 inference and ONNX audio processing on Raspberry Pi 5.</li></ul></section>
+          <section><h2>Outputs</h2><ul><li>Produced a first author manuscript submitted to IEEE PerCom 2027.</li><li>Reduced mean privacy leakage from 0.502 to 0.378 on 143 held out conversations with 0.900 utility.</li><li>The audio front end achieved a 0.77 weighted real time factor. This measurement does not describe the complete pipeline.</li></ul></section>
 
         </div>
 

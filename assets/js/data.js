@@ -14,7 +14,7 @@ window.PROJECTS = [
       "Modified USBasp firmware to hijack the AVR reset vector and inject a firmware stub during programming.",
       "Implemented readback spoofing so the host receives the expected bytes during verification.",
       "Reverse engineered ST Link V2 firmware and tested custom programmer firmware on three target boards.",
-      "Extended the threat model across AVR, STM32, and MSP430 programming architectures."
+      "Planned further experiments across STM32 and MSP430 programming architectures."
     ],
     outcomes: [
       "Demonstrated a complete path from trusted input firmware to altered target execution.",
@@ -48,13 +48,13 @@ window.PROJECTS = [
     work: [
       "Constructed expected and Trojan affected execution trace datasets across computational and application workloads.",
       "Developed a 1D CNN pipeline for classifying program behavior from transaction windows.",
-      "Designed experiments across workload, processor, and cache configurations.",
-      "Defined an FPGA monitor architecture for latency and resource evaluation."
+      "Planned generalization studies across workload, processor, and cache configurations.",
+      "Specified an FPGA monitor architecture for future latency and resource evaluation."
     ],
     outcomes: [
       "Created a repeatable trace collection and labeling pipeline.",
-      "Linked classifier evaluation to a deployable on chip monitoring architecture.",
-      "Kept generalization across system configurations as a first class evaluation target."
+      "Developed a 1D CNN classifier for transaction level behavior.",
+      "Specified the monitoring architecture. FPGA deployment and generalization evaluation remain planned work."
     ],
     links: [
       { label: "Open manuscript", url: "assets/writeups/On_Chip_Behavioral_Monitoring.pdf" }
@@ -126,7 +126,7 @@ window.PROJECTS = [
     shortTitle: "WatchTower",
     year: "2025",
     category: "Embedded AI",
-    status: "Manuscript in preparation",
+    status: "Preprint",
     featured: true,
     tags: ["Network security", "Transformer", "Open set", "Raspberry Pi"],
     summary: "A packet window anomaly detector for known and unseen attacks on edge devices.",
@@ -220,6 +220,7 @@ window.PROJECTS = [
       "Reduced the main program loop from 520 to 7 CPU cycles.",
       "Reduced payload transmission time from 50 to 28 milliseconds and boot to transmission time from 1,530 to under 125 milliseconds.",
       "The harvester transmitted after each of 10,000 accelerated actuations.",
+      "Field reliability reached 99.3 percent across 5,945 lid actuations at five campus sites.",
       "Demonstrated batteryless smart bin fill monitoring with long range cloud transmission.",
       "The work was accepted at IEEE MASS 2026."
     ],
@@ -243,7 +244,7 @@ window.PROJECTS = [
     status: "Accepted at IEEE DCOSS IoT",
     featured: false,
     tags: ["Precision agriculture", "ESP NOW", "Mesh network", "Conversational IoT"],
-    summary: "A conversational sensing system for smallholder precision agriculture across low connectivity field sites.",
+    summary: "Urdu WhatsApp text and voice advice grounded in live soil and climate measurements for smallholder farmers.",
     problem: "Smallholder farmers need actionable local guidance without relying on technical dashboards or continuous internet access.",
     work: [
       "Built the multi hop ESP NOW monitoring mesh that relayed soil and climate measurements to a gateway.",
@@ -253,6 +254,7 @@ window.PROJECTS = [
     outcomes: [
       "The system operated at two field sites for 45 days each.",
       "The mesh extended coverage beyond direct gateway range.",
+      "Farmers maintained near daily use and used the guidance to inform irrigation after dashboard engagement faded.",
       "The system achieved over 90 percent correctness on sensor grounded crop queries.",
       "The work was accepted at IEEE DCOSS IoT 2026."
     ],
@@ -276,16 +278,16 @@ window.PROJECTS = [
     status: "Preprint",
     featured: false,
     tags: ["Digital health", "Wearables", "LLM", "LMIC"],
-    summary: "A framework for turning wearable sensor readings into comprehensible health guidance in low resource settings.",
+    summary: "Plain language WhatsApp health feedback from a low cost wearable for users with limited health literacy.",
     problem: "Raw wearable measurements are difficult to interpret without clinical context. Access to in person guidance is also uneven in many low resource settings.",
     work: [
-      "Contributed embedded systems and wearable sensing expertise to the system design.",
-      "Connected physiological measurements to a language based guidance layer.",
-      "Evaluated the approach around accessible and contextual explanations."
+      "Designed a $12.72 screenless ATmega328P band and BLE firmware.",
+      "Combined PPG with temperature and motion sensing.",
+      "Co-developed plain language WhatsApp health feedback and supported a 20 participant study over 96 hours."
     ],
     outcomes: [
       "Produced a public preprint and supporting system implementation.",
-      "Framed wearable guidance around constrained settings and comprehensibility."
+      "Mean self rated health data comprehension rose from 3.05 to 3.60 out of 5."
     ],
     links: [
       { label: "Read on arXiv", url: "https://arxiv.org/abs/2602.08701" },
@@ -307,16 +309,17 @@ window.PROJECTS = [
     status: "Submitted manuscript",
     featured: false,
     tags: ["Audio privacy", "Smart glasses", "On device AI", "Small language models"],
-    summary: "On device audio privacy for smart glasses using compact language models.",
-    problem: "Always available audio interfaces can capture speech that should not leave the device. Privacy decisions also need enough context to preserve useful interaction.",
+    summary: "Context aware audio redaction and voice replacement for smart glasses using a compact on device language model.",
+    problem: "Smart glasses can reveal bystander identity and private attributes inferred across conversation turns. Local processing must protect that information while retaining useful conversation content.",
     work: [
-      "Built an on device pipeline for detecting and transforming privacy sensitive spoken content.",
-      "Evaluated compact language models under the memory and latency limits of wearable hardware.",
-      "Designed the system around local processing before any external transmission."
+      "Designed context aware redaction and voice replacement for bystander audio.",
+      "Labeled 717 CANDOR conversations and combined speaker profiles with retrieval and a distilled 2B model trained through preference optimization.",
+      "Deployed Q4 inference and ONNX audio processing on Raspberry Pi 5."
     ],
     outcomes: [
       "Produced a first author manuscript submitted to IEEE PerCom 2027.",
-      "Evaluated the on device pipeline across privacy and utility objectives."
+      "Reduced mean privacy leakage from 0.502 to 0.378 on 143 held out conversations with 0.900 utility.",
+      "The audio front end achieved a 0.77 weighted real time factor. This measurement does not describe the complete pipeline."
     ],
     links: [
       { label: "Open submitted manuscript", url: "assets/writeups/PARDA.pdf" }

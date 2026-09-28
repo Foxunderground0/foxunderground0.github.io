@@ -48,11 +48,11 @@ function prioritizeVideos(items) {
   return ordered;
 }
 
-function mediaDialog() {
+function mediaDialog(prefix = "") {
   return `<dialog class="media-viewer" aria-label="Media viewer">
   <div class="viewer-header"><p class="viewer-caption"></p><button class="viewer-close" type="button" aria-label="Close media viewer">Close</button></div>
   <div class="viewer-stage"></div>
-  <div class="viewer-footer"><button class="viewer-prev" type="button" aria-label="Previous media">Previous</button><a class="viewer-project" href="projects.html">Project details</a><button class="viewer-next" type="button" aria-label="Next media">Next</button></div>
+  <div class="viewer-footer"><button class="viewer-prev" type="button" aria-label="Previous media">Previous</button><a class="viewer-project" href="${prefix}projects.html">Project details</a><button class="viewer-next" type="button" aria-label="Next media">Next</button></div>
 </dialog>`;
 }
 
@@ -176,7 +176,7 @@ function projectPage(project) {
   const presentationUrl = presentation ? `${siteUrl}/${presentation.path}` : "";
   const presentationSection = presentation ? `<section class="presentation-section" id="presentation">
   <h2>Presentation</h2>
-  <p><a href="${escapeHtml(presentation.path)}" target="_blank" rel="noopener">Open ${escapeHtml(presentation.label)} in PowerPoint for the web</a> · <a href="${escapeHtml(presentation.path)}" download>Download PowerPoint file</a></p>
+  <p><a href="${escapeHtml(localHref(presentation.path, prefix))}" target="_blank" rel="noopener">Open ${escapeHtml(presentation.label)} in PowerPoint for the web</a> · <a href="${escapeHtml(localHref(presentation.path, prefix))}" download>Download PowerPoint file</a></p>
   <iframe class="presentation-frame" src="https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(presentationUrl)}" title="${escapeHtml(presentation.label)}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
 </section>` : "";
   const mediaSection = projectMedia.length ? `<section class="media-section" id="media">
@@ -240,7 +240,7 @@ function projectPage(project) {
     </main>
   </div>
   <footer class="footer shell"><p>Copyright Umer Irfan 2026. This website contains unpublished research content owned by Umer Irfan. Reuse requires prior written consent. <a href="../LICENSE">License</a></p></footer>
-  ${projectMedia.length ? mediaDialog() : ""}
+  ${projectMedia.length ? mediaDialog(prefix) : ""}
 </body>
 </html>
 `;

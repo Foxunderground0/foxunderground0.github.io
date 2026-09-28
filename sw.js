@@ -1,4 +1,4 @@
-const CACHE_NAME = "umer-irfan-site-v7";
+const CACHE_NAME = "umer-irfan-site-v8";
 const CORE_ASSETS = [
   "./",
   "./index.html",

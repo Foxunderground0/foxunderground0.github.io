@@ -18,12 +18,12 @@ body {
   margin: 0;
   color: var(--text);
   background-color: #fff;
-  background-image:
+  background:
     linear-gradient(90deg, transparent 0 32px, #404674 32px 64px, transparent 64px) 0 64px / 96px 16px repeat-x,
     linear-gradient(90deg, #5d618a 0 48px, transparent 48px) 0 80px / 96px 16px repeat-x,
     linear-gradient(90deg, transparent 0 16px, #8889a9 16px 64px, transparent 64px) 0 96px / 96px 16px repeat-x,
-    linear-gradient(180deg, #29345f 0 64px, #3c436f 64px 80px, #555a83 80px 96px, #777a9c 96px 112px, #a8a6c2 112px 144px, #e5e4ed 144px 208px, #fff 208px);
-  background-repeat: repeat-x, repeat-x, repeat-x, no-repeat;
+    linear-gradient(180deg, #29345f 0 64px, #3c436f 64px 80px, #555a83 80px 96px, #777a9c 96px 112px, #a8a6c2 112px 144px, #e5e4ed 144px 208px, #fff 208px) 0 0 / 100% 520px no-repeat,
+    #fff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   line-height: 1.55;

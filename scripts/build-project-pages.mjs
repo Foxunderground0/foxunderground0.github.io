@@ -250,12 +250,11 @@ function projectPage(project) {
           ${links ? `<p class="detail-actions">${links}</p>` : ""}
         </header>
         <div class="detail-copy">
-          ${project.overview ? `<section aria-label="Research contribution"><h2>Contribution and results</h2><ul>${project.overview.map((item) => `<li>${emphasis(item)}</li>`).join("")}</ul></section><details><summary>Technical details</summary>` : ""}
+          ${project.overview ? `<section aria-label="Research contribution"><h2>Contribution and results</h2><ul>${project.overview.map((item) => `<li>${emphasis(item)}</li>`).join("")}</ul></section>` : ""}
           <section><h2>Motivation</h2><p>${escapeHtml(project.problem)}</p></section>
           <section><h2>Implementation and scope</h2><ul>${project.work.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
           <section><h2>Outputs</h2><ul>${project.outcomes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
           ${sourceSection}
-          ${project.overview ? "</details>" : ""}
         </div>
         ${presentationSection}
         ${documentSection}

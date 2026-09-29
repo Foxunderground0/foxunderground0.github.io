@@ -75,12 +75,11 @@
           <p class="detail-actions"><a href="../assets/writeups/KeySiphon.pdf">Open project writeup</a></p>
         </header>
         <div class="detail-copy">
-          <section aria-label="Research contribution"><h2>Contribution and results</h2><ul><li>Built a <strong>power-trace acquisition setup</strong> to study RSA leakage on an instrumented ATmega328P.</li><li>Trained a <strong>1D CNN</strong> to classify exponent-bit operations with <strong>93.10 percent validation accuracy</strong>. Connected physical measurement to automated side-channel analysis.</li></ul></section><details><summary>Technical details</summary>
+          <section aria-label="Research contribution"><h2>Contribution and results</h2><ul><li>Built a <strong>power-trace acquisition setup</strong> to study RSA leakage on an instrumented ATmega328P.</li><li>Trained a <strong>1D CNN</strong> to classify exponent-bit operations with <strong>93.10 percent validation accuracy</strong>. Connected physical measurement to automated side-channel analysis.</li></ul></section>
           <section><h2>Motivation</h2><p>Cryptographic software can remain mathematically sound while its physical implementation leaks secret dependent activity through shared power infrastructure.</p></section>
           <section><h2>Implementation and scope</h2><ul><li>Lifted the target supply pin and tuned a 47 ohm shunt network to capture operation level power traces without brownout.</li><li>Collected traces from square and multiply operations on an ATmega328P RSA implementation.</li><li>Trained a 1D CNN to distinguish the cryptographic operations in noisy traces.</li></ul></section>
           <section><h2>Outputs</h2><ul><li>Reached 93.10 percent validation accuracy for operation classification.</li><li>Connected physical trace acquisition to automated exponent-bit classification.</li><li>Evaluated shared-supply leakage using an instrumented proof of concept. The reported accuracy measures bit classification, not full-key recovery.</li></ul></section>
 
-          </details>
         </div>
 
         <section class="document-section">

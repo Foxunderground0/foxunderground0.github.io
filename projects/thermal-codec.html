@@ -75,12 +75,11 @@
 
         </header>
         <div class="detail-copy">
-          <section aria-label="Research contribution"><h2>Contribution and results</h2><ul><li>Co-developed <strong>lossless compression for 16-bit thermal video</strong> using temporal prediction and sensor-noise structure.</li><li>Produced files <strong>15 percent smaller than FFV1 on average</strong> at comparable processing cost. No larger outputs in the tested sets, with a best case of one-third the size.</li></ul></section><details><summary>Technical details</summary>
+          <section aria-label="Research contribution"><h2>Contribution and results</h2><ul><li>Co-developed <strong>lossless compression for 16-bit thermal video</strong> using temporal prediction and sensor-noise structure.</li><li>Produced files <strong>15 percent smaller than FFV1 on average</strong> at comparable processing cost. No larger outputs in the tested sets, with a best case of one-third the size.</li></ul></section>
           <section><h2>Motivation</h2><p>General lossless codecs do not fully exploit the temporal behavior and noise patterns of raw thermal camera data.</p></section>
           <section><h2>Implementation and scope</h2><ul><li>Designed temporal predictors around thermal scene continuity.</li><li>Modeled camera noise patterns to avoid spending bits on predictable sensor behavior.</li><li>Benchmarked encode and decode cost against FFV1 across recorded datasets.</li></ul></section>
           <section><h2>Outputs</h2><ul><li>Produced files 15 percent smaller than FFV1 on average at similar encode and decode cost.</li><li>Recorded no regression against FFV1 across the tested sets.</li><li>The smallest output was one-third the size of FFV1 on the same input.</li></ul></section>
 
-          </details>
         </div>
 
 

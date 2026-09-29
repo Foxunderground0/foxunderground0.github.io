@@ -75,16 +75,18 @@
 
         </header>
         <div class="detail-copy">
+          <section aria-label="Research contribution"><h2>Contribution and results</h2><ul><li>Developed <strong>open-set intrusion detection</strong> for edge devices, addressing traffic from attacks absent from training data.</li><li>Combined a transformer and 28 packet-level features with INT8 deployment on <strong>Raspberry Pi 5</strong>. Reported <strong>3.82 ms inference</strong> and <strong>93.66 percent classification accuracy</strong>.</li></ul></section><details><summary>Technical details</summary>
           <section><h2>Motivation</h2><p>Closed set intrusion classifiers can force unfamiliar traffic into a known label. Edge deployment also requires predictable memory and latency.</p></section>
-          <section><h2>Work completed</h2><ul><li>Built a transformer detector around 28 packet level features.</li><li>Integrated PROSER open set recognition, FedProx, and gated memory tokens.</li><li>Applied INT8 quantization and TVM optimization for Raspberry Pi 5 deployment.</li></ul></section>
+          <section><h2>Implementation and scope</h2><ul><li>Built a transformer detector around 28 packet level features.</li><li>Integrated PROSER open set recognition, FedProx, and gated memory tokens.</li><li>Applied INT8 quantization and TVM optimization for Raspberry Pi 5 deployment.</li></ul></section>
           <section><h2>Outputs</h2><ul><li>Reached 93.66 percent classification accuracy in the reported evaluation.</li><li>Measured 3.82 millisecond inference latency on Raspberry Pi 5.</li><li>Combined open set detection with a deployable edge inference path.</li></ul></section>
 
+          </details>
         </div>
 
 
 
       </article>
-      <section class="content-section"><h2>Related projects</h2><div class="project-list"><article class="project-entry" data-category="Embedded AI" data-search="pixelpacker edge and cloud neural image compression for bandwidth constrained wildlife camera traps. embedded ai research project artix 7 neural compression esp32 int8">
+      <section class="content-section"><h2>Related projects</h2><div class="project-list"><article class="project-entry" data-category="Embedded AI" data-search="pixelpacker pixelpacker edge and cloud neural image compression for bandwidth constrained wildlife camera traps. embedded ai research project artix 7 neural compression esp32 int8 developed fpga-accelerated image compression for wildlife cameras on limited-bandwidth links. background-aware latent differencing avoids retransmitting unchanged scenery. reduced the encoder from 28.4 mb to 800 kb through distillation and int8 quantization. implemented an artix-7 accelerator and esp32 compression path. distilled and quantized a depthwise separable encoder to a 36 fold smaller memory footprint than its teacher. developed an artix 7 fpga accelerator with pipelined dsps, fifo buffering, and ddr memory access. implemented background aware latent differencing on esp32 to exploit fixed camera viewpoints. paired the edge encoder with a higher capacity cloud decoder for reconstruction. reached up to 200 fold compression over raw images in the reported evaluation. reduced bitrate by more than ten fold against maximum jpeg compression while retaining comparable perceptual quality. reported energy efficiency above 66 gops per joule for the hardware path.">
   <div>
     <div class="project-title-line"><h3><a href="../projects/pixelpacker.html">PixelPacker</a></h3><span class="artifact-links"><a class="artifact-icon" href="../assets/writeups/PixelPacker.pdf" title="PDF or writeup available" aria-label="Open PDF or writeup"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3.5"/></svg></a></span></div>
     <p>Edge and cloud neural image compression for bandwidth constrained wildlife camera traps.</p>
@@ -92,7 +94,7 @@
   </div>
   <div class="project-entry-meta">2025 to 2026<br>Embedded AI</div>
 </article>
-<article class="project-entry" data-category="Embedded AI" data-search="esp32 knock detector an on device vibration classifier that recognizes knocks and triggers a local action. embedded ai completed esp32 tensorflow lite mpu6050 quantization">
+<article class="project-entry" data-category="Embedded AI" data-search="esp32 knock detector knock detector an on device vibration classifier that recognizes knocks and triggers a local action. embedded ai completed esp32 tensorflow lite mpu6050 quantization built the collection and visualization pipeline for 1,000 sample accelerometer windows. trained a convolutional model and applied pruning and quantization for esp32 deployment. integrated the model with an mpu6050 and local actuation path. reduced the model from 431 kb to 39 kb after pruning and quantization. reported 99.29 percent validation accuracy in the project evaluation.">
   <div>
     <div class="project-title-line"><h3><a href="../projects/knock-detector.html">Knock Detector</a></h3><span class="artifact-links"><a class="artifact-icon" href="https://github.com/Foxunderground0/ESP32-TFLite-Knock-Detector" title="Repository available" aria-label="Open repository"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3" r="1.5"/><circle cx="4" cy="13" r="1.5"/><circle cx="12" cy="6" r="1.5"/><path d="M4 4.5v7M5.5 5.5h3A3.5 3.5 0 0 0 12 2v2.5"/></svg></a></span></div>
     <p>An on device vibration classifier that recognizes knocks and triggers a local action.</p>
@@ -100,7 +102,7 @@
   </div>
   <div class="project-entry-meta">2023<br>Embedded AI</div>
 </article>
-<article class="project-entry" data-category="Embedded AI" data-search="voice gender classification a tensorflow audio classification project for voice characteristics. embedded ai completed tensorflow audio classification">
+<article class="project-entry" data-category="Embedded AI" data-search="voice gender classification voice classification a tensorflow audio classification project for voice characteristics. embedded ai completed tensorflow audio classification prepared audio inputs and trained a tensorflow classifier. built an inference path around the trained model. released the implementation as a public repository.">
   <div>
     <div class="project-title-line"><h3><a href="../projects/voice-classification.html">Voice Classification</a></h3><span class="artifact-links"><a class="artifact-icon" href="https://github.com/Foxunderground0/TensorFlow-Voice-Gender-Classification" title="Repository available" aria-label="Open repository"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3" r="1.5"/><circle cx="4" cy="13" r="1.5"/><circle cx="12" cy="6" r="1.5"/><path d="M4 4.5v7M5.5 5.5h3A3.5 3.5 0 0 0 12 2v2.5"/></svg></a></span></div>
     <p>A TensorFlow audio classification project for voice characteristics.</p>

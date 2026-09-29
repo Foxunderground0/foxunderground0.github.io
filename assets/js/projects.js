@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let activeCategory = categories.includes(requestedCategory) ? requestedCategory : "All";
 
   filters.innerHTML = categories
-    .map((category) => `<button class="filter-button${category === activeCategory ? " active" : ""}" type="button" data-category="${category}">${category}</button>`)
+    .map((category) => `<button class="filter-button${category === activeCategory ? " active" : ""}" type="button" aria-pressed="${category === activeCategory}" data-category="${category}">${category}</button>`)
     .join("");
 
   function render() {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (const entry of entries) {
       const categoryMatch = activeCategory === "All" || entry.dataset.category === activeCategory;
-      const searchMatch = entry.dataset.search.includes(query);
+      const searchMatch = query.split(/\s+/).every((term) => entry.dataset.search.includes(term));
       entry.hidden = !(categoryMatch && searchMatch);
       if (!entry.hidden) visibleCount += 1;
     }
@@ -32,7 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = event.target.closest("button[data-category]");
     if (!button) return;
     activeCategory = button.dataset.category;
-    filters.querySelectorAll("button").forEach((item) => item.classList.toggle("active", item === button));
+    filters.querySelectorAll("button").forEach((item) => {
+      item.classList.toggle("active", item === button);
+      item.setAttribute("aria-pressed", String(item === button));
+    });
     render();
   });
 

@@ -75,16 +75,18 @@
           <p class="detail-actions"><a href="https://github.com/Foxunderground0/MPU-6050-Kernel-Driver">View code on GitHub</a></p>
         </header>
         <div class="detail-copy">
+          <section aria-label="Research contribution"><h2>Contribution and results</h2><ul><li>Developed a <strong>Linux I2C kernel driver</strong> and userspace device interface for an MPU6050 sensor.</li><li>Optimized register transactions to reach <strong>1,700 samples per second</strong>. Added kernel buffer handling and validation for userspace transfers.</li></ul></section><details><summary>Technical details</summary>
           <section><h2>Motivation</h2><p>The project moved sensor communication into the kernel to study the boundary between hardware, drivers, and userspace.</p></section>
-          <section><h2>Work completed</h2><ul><li>Developed the driver through the Linux I2C subsystem.</li><li>Exposed a device interface for userspace communication.</li><li>Implemented kernel buffer handling and validation for userspace transfers.</li></ul></section>
+          <section><h2>Implementation and scope</h2><ul><li>Developed the driver through the Linux I2C subsystem.</li><li>Exposed a device interface for userspace communication.</li><li>Implemented kernel buffer handling and validation for userspace transfers.</li></ul></section>
           <section><h2>Outputs</h2><ul><li>Reached 1,700 samples per second through optimized register transactions.</li><li>Produced a public implementation for Raspberry Pi.</li></ul></section>
 
+          </details>
         </div>
 
 
 
       </article>
-      <section class="content-section"><h2>Related projects</h2><div class="project-list"><article class="project-entry" data-category="Systems" data-search="lossless thermal video codec a codec for noisy 16 bit thermal camera streams using temporal predictors and sensor noise structure. systems research prototype lossless compression thermal imaging 16 bit video temporal prediction">
+      <section class="content-section"><h2>Related projects</h2><div class="project-list"><article class="project-entry" data-category="Systems" data-search="lossless thermal video codec thermal codec a codec for noisy 16 bit thermal camera streams using temporal predictors and sensor noise structure. systems research prototype lossless compression thermal imaging 16 bit video temporal prediction co-developed lossless compression for 16-bit thermal video using temporal prediction and sensor-noise structure. produced files 15 percent smaller than ffv1 on average at comparable processing cost. no larger outputs in the tested sets, with a best case of one-third the size. designed temporal predictors around thermal scene continuity. modeled camera noise patterns to avoid spending bits on predictable sensor behavior. benchmarked encode and decode cost against ffv1 across recorded datasets. produced files 15 percent smaller than ffv1 on average at similar encode and decode cost. recorded no regression against ffv1 across the tested sets. the smallest output was one-third the size of ffv1 on the same input.">
   <div>
     <div class="project-title-line"><h3><a href="../projects/thermal-codec.html">Thermal Codec</a></h3></div>
     <p>A codec for noisy 16 bit thermal camera streams using temporal predictors and sensor noise structure.</p>
@@ -92,7 +94,7 @@
   </div>
   <div class="project-entry-meta">2025 to 2026<br>Systems</div>
 </article>
-<article class="project-entry" data-category="Systems" data-search="jpeg encoder and decoder a c++ implementation of the core stages used to encode and decode jpeg images. systems completed c++ image coding compression">
+<article class="project-entry" data-category="Systems" data-search="jpeg encoder and decoder jpeg codec a c++ implementation of the core stages used to encode and decode jpeg images. systems completed c++ image coding compression implemented the encoder and decoder in c++. worked through block transforms, quantization, and coded image reconstruction. produced a working codec implementation and public source repository.">
   <div>
     <div class="project-title-line"><h3><a href="../projects/jpeg-codec.html">JPEG Codec</a></h3><span class="artifact-links"><a class="artifact-icon" href="https://github.com/Foxunderground0/CPP-JPEG-Encoder-Decoder" title="Repository available" aria-label="Open repository"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3" r="1.5"/><circle cx="4" cy="13" r="1.5"/><circle cx="12" cy="6" r="1.5"/><path d="M4 4.5v7M5.5 5.5h3A3.5 3.5 0 0 0 12 2v2.5"/></svg></a></span></div>
     <p>A C++ implementation of the core stages used to encode and decode JPEG images.</p>

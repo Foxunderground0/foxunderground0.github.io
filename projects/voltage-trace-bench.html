@@ -75,10 +75,12 @@
           <p class="detail-actions"><a href="https://sysnet.lums.edu.pk/">SYSNET Lab</a></p>
         </header>
         <div class="detail-copy">
+          <section aria-label="Research contribution"><h2>Contribution and results</h2><ul><li>Built an <strong>arbitrary voltage-trace replay bench</strong> using laptop-controlled function generators and amplifiers.</li><li>Made power conditions <strong>repeatable across experiments</strong> on transiently powered devices. Supported SYSNET research including CheckMate.</li></ul></section><details><summary>Technical details</summary>
           <section><h2>Motivation</h2><p>Intermittent computing systems need repeatable power conditions to compare behavior under the same energy supply.</p></section>
-          <section><h2>Work completed</h2><ul><li>Built a laptop controlled setup to replay arbitrary recorded voltage traces.</li><li>Combined function generators and amplifiers to supply transiently powered electronics.</li><li>Used the setup to measure device behavior under repeatable voltage profiles during SYSNET research.</li></ul></section>
+          <section><h2>Implementation and scope</h2><ul><li>Built a laptop controlled setup to replay arbitrary recorded voltage traces.</li><li>Combined function generators and amplifiers to supply transiently powered electronics.</li><li>Used the setup to measure device behavior under repeatable voltage profiles during SYSNET research.</li></ul></section>
           <section><h2>Outputs</h2><ul><li>Created experimental infrastructure for evaluating transiently powered systems.</li><li>Supported laboratory experiments including the CheckMate project.</li></ul></section>
 
+          </details>
         </div>
 
 
@@ -113,7 +115,7 @@
 </figure></div>
 </section>
       </article>
-      <section class="content-section"><h2>Related projects</h2><div class="project-list"><article class="project-entry" data-category="Research" data-search="programmer in the middle a firmware supply chain attack that treats flash programming equipment as an untrusted stage after compilation and code review. research manuscript in preparation firmware security avr st link ghidra">
+      <section class="content-section"><h2>Related projects</h2><div class="project-list"><article class="project-entry" data-category="Research" data-search="programmer in the middle pitm a firmware supply chain attack that treats flash programming equipment as an untrusted stage after compilation and code review. research manuscript in preparation firmware security avr st link ghidra demonstrated firmware implantation through compromised flash programmers. modified usbasp to inject avr code while returning clean host readback checks. reverse engineered st-link v2 and tested custom programmer firmware on three target boards. the work examines a trust gap between reviewed binaries and programmed hardware. modified usbasp firmware to hijack the avr reset vector and inject a firmware stub during programming. implemented readback spoofing so the host receives the expected bytes during verification. reverse engineered st link v2 firmware and tested custom programmer firmware on three target boards. planned further experiments across stm32 and msp430 programming architectures. demonstrated a complete path from trusted input firmware to altered target execution. showed that programmer side manipulation can survive routine host readback checks. produced a cross architecture experimental plan for evaluating the same trust gap.">
   <div>
     <div class="project-title-line"><h3><a href="../projects/pitm.html">PITM</a></h3><span class="artifact-links"><a class="artifact-icon" href="../assets/writeups/Programmer_in_the_Middle.pdf" title="PDF or writeup available" aria-label="Open PDF or writeup"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3.5"/></svg></a><a class="artifact-icon" href="../gallery.html?project=pitm" title="Photos or videos available" aria-label="Open project photos and videos"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="2" width="13" height="12" rx="1"/><circle cx="5" cy="5.5" r="1.2"/><path d="m2 12 3.5-3.5 2.2 2.2 2.1-2.1L14 13"/></svg></a></span></div>
     <p>A firmware supply chain attack that treats flash programming equipment as an untrusted stage after compilation and code review.</p>
@@ -121,7 +123,7 @@
   </div>
   <div class="project-entry-meta">2026 to present<br>Research</div>
 </article>
-<article class="project-entry" data-category="Research" data-search="on chip behavioral monitoring runtime hardware trojan detection from transaction level traces of expected program behavior. research manuscript in preparation hardware security 1d cnn fpga risc v">
+<article class="project-entry" data-category="Research" data-search="on chip behavioral monitoring on chip monitoring runtime hardware trojan detection from transaction level traces of expected program behavior. research manuscript in preparation hardware security 1d cnn fpga risc v built a transaction-trace collection pipeline and 1d cnn classifier for runtime hardware trojan monitoring. the approach targets malicious execution that can escape pre-deployment tests. specified an fpga monitor architecture. evaluation across workloads, processor configurations and caches remains ongoing. constructed expected and trojan affected execution trace datasets across computational and application workloads. developed a 1d cnn pipeline for classifying program behavior from transaction windows. planned generalization studies across workload, processor, and cache configurations. specified an fpga monitor architecture for future latency and resource evaluation. created a repeatable trace collection and labeling pipeline. developed a 1d cnn classifier for transaction level behavior. specified the monitoring architecture. fpga deployment and generalization evaluation remain planned work.">
   <div>
     <div class="project-title-line"><h3><a href="../projects/on-chip-monitoring.html">On Chip Monitoring</a></h3><span class="artifact-links"><a class="artifact-icon" href="../assets/writeups/On_Chip_Behavioral_Monitoring.pdf" title="PDF or writeup available" aria-label="Open PDF or writeup"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3.5"/></svg></a></span></div>
     <p>Runtime hardware Trojan detection from transaction level traces of expected program behavior.</p>
@@ -129,10 +131,10 @@
   </div>
   <div class="project-entry-meta">2026 to present<br>Research</div>
 </article>
-<article class="project-entry" data-category="Research" data-search="keysiphon automated rsa key recovery from power rail observations of a shared embedded supply. research completed side channel rsa atmega328p 1d cnn">
+<article class="project-entry" data-category="Research" data-search="keysiphon keysiphon rsa exponent-bit classification from power traces on an instrumented atmega328p prototype. research completed side channel rsa atmega328p 1d cnn built a power-trace acquisition setup to study rsa leakage on an instrumented atmega328p. trained a 1d cnn to classify exponent-bit operations with 93.10 percent validation accuracy. connected physical measurement to automated side-channel analysis. lifted the target supply pin and tuned a 47 ohm shunt network to capture operation level power traces without brownout. collected traces from square and multiply operations on an atmega328p rsa implementation. trained a 1d cnn to distinguish the cryptographic operations in noisy traces. reached 93.10 percent validation accuracy for operation classification. connected physical trace acquisition to automated exponent-bit classification. evaluated shared-supply leakage using an instrumented proof of concept. the reported accuracy measures bit classification, not full-key recovery.">
   <div>
     <div class="project-title-line"><h3><a href="../projects/keysiphon.html">KeySiphon</a></h3><span class="artifact-links"><a class="artifact-icon" href="../assets/writeups/KeySiphon.pdf" title="PDF or writeup available" aria-label="Open PDF or writeup"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3.5"/></svg></a></span></div>
-    <p>Automated RSA key recovery from power rail observations of a shared embedded supply.</p>
+    <p>RSA exponent-bit classification from power traces on an instrumented ATmega328P prototype.</p>
     <p class="project-tags">Side channel · RSA · ATmega328P · 1D CNN</p>
   </div>
   <div class="project-entry-meta">2025<br>Research</div>

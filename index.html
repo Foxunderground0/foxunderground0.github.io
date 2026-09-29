@@ -65,8 +65,8 @@
     <main id="main" class="academic-main">
       <section class="content-section" aria-labelledby="about-heading">
         <h2 id="about-heading">About</h2>
-        <p>I am a Computer Science undergraduate at Lahore University of Management Sciences with a minor in Computer Engineering. My research interests are embedded systems, hardware security, firmware security, computer architecture, and operating systems.</p>
-        <p>I worked as a research assistant at <a href="https://sysnet.lums.edu.pk/">SYSNET Lab</a> with <a href="https://naveedanwarbhatti.github.io/">Dr. Naveed Anwar Bhatti</a> and at <a href="https://chase.lums.edu.pk/index.html">CHASE Lab</a> with <a href="https://lums.edu.pk/lums_employee/9462">Dr. Muhammad Ali Siddiqi</a>. My work includes compromised flash programmers, runtime hardware Trojan detection, transiently powered sensing, embedded AI, and low power sensing platforms.</p>
+        <p>I am a Computer Science undergraduate at Lahore University of Management Sciences with a minor in Computer Engineering. My research focuses on the security and operation of embedded systems.</p>
+        <p>I worked at <a href="https://sysnet.lums.edu.pk/">SYSNET Lab</a> with <a href="https://naveedanwarbhatti.github.io/">Dr. Naveed Anwar Bhatti</a> and <a href="https://chase.lums.edu.pk/index.html">CHASE Lab</a> with <a href="https://lums.edu.pk/lums_employee/9462">Dr. Muhammad Ali Siddiqi</a>. I developed sensing hardware and experimental infrastructure. My current research examines compromised flash programmers and runtime hardware Trojan detection.</p>
 
         <h3>Research interests</h3>
         <p>Embedded systems. Hardware security. Firmware security. Computer architecture. Operating systems.</p>
@@ -95,7 +95,7 @@
           </article>
           <article>
             <div class="experience-heading"><h3>Research Assistant at <a href="https://chase.lums.edu.pk/index.html">CHASE Lab</a></h3><span>2025 to 2026</span></div>
-            <p>Worked on FPGA datapaths, power side channel analysis, compromised programming equipment, medical device security, and runtime hardware Trojan detection.</p>
+            <p>Developed FPGA inference datapaths and power measurement setups. Investigated firmware implantation through compromised flash programmers, pacemaker BLE energy costs and transaction-level Trojan monitoring.</p>
           </article>
         </div>
       </section>
@@ -108,11 +108,10 @@
           <li>
             <p><strong>Motion-Coupled Sensing</strong>. When the State Change Powers Its Own Sensing.</p>
             <p class="publication-meta">IEEE MASS 2026 · Co-author</p>
-            <p class="publication-links"><a href="https://arxiv.org/abs/2605.19793">arXiv</a> <a href="assets/papers/Motion_Coupled_Sensing.pdf">PDF</a> <a href="projects/motion-coupled.html">Project notes</a></p>
+            <p class="publication-links"><a href="https://arxiv.org/abs/2605.19793">arXiv</a> <a href="assets/papers/Motion_Coupled_Sensing.pdf">PDF</a> <a href="https://github.com/SYSNET-LUMS/Batteryless-event-driven-sensing-platform">Hardware and firmware</a> <a href="projects/motion-coupled.html">Project notes</a></p>
             <ul>
-              <li>Co-developed <strong>motion coupled sensing</strong> to eliminate battery maintenance and idle polling. Hinge motion powered state measurement and wireless reporting.</li>
-              <li>Designed <strong>ATmega328P hardware</strong> and LoRa firmware. Cut a firmware loop from <strong>520 to 7 CPU cycles</strong> using fixed point arithmetic.</li>
-              <li>Built a <strong>stepper driven rig</strong> and verified <strong>10,000 transmissions</strong> without visible wear. Field reliability reached <strong>99.3 percent</strong> across 5,945 lid actuations at five campus sites.</li>
+              <li>Co-developed <strong>batteryless sensing hardware and LoRa firmware</strong>. Hinge motion powers sensing and reporting, removing battery maintenance and idle polling.</li>
+              <li>Built a <strong>10,000-actuation stress-test rig</strong>. The team measured <strong>99.3 percent transmission reliability</strong> over 5,945 bin-lid actuations at five sites.</li>
             </ul>
           </li>
           <li>
@@ -120,9 +119,8 @@
             <p class="publication-meta">IEEE DCOSS-IoT 2026 · Co-author</p>
             <p class="publication-links"><a href="https://arxiv.org/abs/2602.08593">arXiv</a> <a href="assets/papers/Kissan_Dost.pdf">PDF</a> <a href="projects/kissan-dost.html">Project notes</a></p>
             <ul>
-              <li>Co-developed <strong>Urdu WhatsApp text and voice advice</strong> so smallholder farmers could act on live sensor readings without interpreting dashboards.</li>
-              <li>Built a <strong>multi hop ESP-NOW monitoring mesh</strong> and ESP32 gateway for soil and climate sensing.</li>
-              <li>Deployed at <strong>two field sites for 45 days each</strong>. Farmers maintained near daily use and used the guidance to inform irrigation.</li>
+              <li>Built the <strong>multi-hop sensing mesh</strong> behind <strong>Urdu WhatsApp text and voice guidance</strong>. Helped smallholder farmers act on measurements without technical dashboards.</li>
+              <li>Deployed at <strong>two field sites for 45 days each</strong>. A five-participant pilot found near-daily chatbot use and irrigation decisions informed by the guidance.</li>
             </ul>
           </li>
         </ol>
@@ -134,9 +132,8 @@
             <p class="publication-meta">IEEE PerCom 2027 · First author</p>
             <p class="publication-links"><a href="assets/writeups/PARDA.pdf">Manuscript</a> <a href="projects/parda.html">Project notes</a></p>
             <ul>
-              <li>Designed <strong>context aware redaction and voice replacement</strong> for smart glasses audio. Protected bystander identity and private attributes inferred across conversation turns.</li>
-              <li>Labeled 717 CANDOR conversations. Combined speaker profiles with retrieval and a distilled <strong>2B model</strong> trained through preference optimization. Deployed Q4 inference and ONNX audio on <strong>Raspberry Pi 5</strong>.</li>
-              <li>Reduced mean privacy leakage from <strong>0.502 to 0.378</strong> on <strong>143 held out conversations</strong> with 0.900 utility. The audio front end achieved a <strong>0.77 weighted real time factor</strong>.</li>
+              <li>Designed <strong>on-device audio privacy</strong> using a retrieval-aware <strong>2B model</strong>. Redacted private attributes inferred across conversation turns and replaced speaker voices.</li>
+              <li>Reduced model-judged leakage from <strong>0.502 to 0.378</strong> on <strong>143 held-out conversations</strong> while utility rose from 0.875 to 0.900. Evaluated quantized deployment on Raspberry Pi 5.</li>
             </ul>
           </li>
         </ol>
@@ -146,21 +143,19 @@
           <li>
             <p><strong>Programmer in the Middle</strong>. Firmware Implantation via Flash Programmers.</p>
             <p class="publication-meta">Joint first author</p>
-            <p class="publication-links"><a href="assets/writeups/Programmer_in_the_Middle.pdf">Manuscript</a> <a href="projects/pitm.html">Project notes</a></p>
+            <p class="publication-links"><a href="assets/writeups/Programmer_in_the_Middle.pdf">Working draft</a> <a href="projects/pitm.html">Project notes</a></p>
             <ul>
-              <li>Demonstrated a <strong>firmware supply chain trust gap</strong>. Compromised programmers implanted code after review while leaving host binaries and verification results unchanged.</li>
-              <li>Modified USBasp firmware for <strong>AVR reset vector hijacking</strong> and stub injection. Spoofed host readback checks.</li>
-              <li><strong>Reverse engineered ST-Link V2</strong> firmware and tested custom programmer firmware across <strong>three target boards</strong>.</li>
+              <li>Demonstrated <strong>firmware implantation through compromised flash programmers</strong>. Modified USBasp to inject AVR code while returning clean host readback checks.</li>
+              <li><strong>Reverse engineered ST-Link V2</strong> and tested custom programmer firmware on <strong>three target boards</strong>. Exposed a trust gap between reviewed binaries and programmed hardware.</li>
             </ul>
           </li>
           <li>
             <p><strong>On Chip Behavioral Monitoring</strong> for Runtime Hardware Trojan Detection.</p>
             <p class="publication-meta">Joint first author</p>
-            <p class="publication-links"><a href="assets/writeups/On_Chip_Behavioral_Monitoring.pdf">Manuscript</a> <a href="projects/on-chip-monitoring.html">Project notes</a></p>
+            <p class="publication-links"><a href="assets/writeups/On_Chip_Behavioral_Monitoring.pdf">Early draft</a> <a href="projects/on-chip-monitoring.html">Project notes</a></p>
             <ul>
-              <li>Designed <strong>transaction level Trojan monitoring</strong> to catch rare trigger attacks that can pass predeployment tests.</li>
-              <li>Built a trace collection pipeline for expected and <strong>Trojan affected execution</strong> across computational and application workloads. Developed a <strong>1D CNN classifier</strong>.</li>
-              <li>Specified an <strong>FPGA monitor architecture</strong>. Planned generalization studies across processor and cache configurations with latency and resource evaluation.</li>
+              <li>Built a <strong>transaction-trace pipeline</strong> and <strong>1D CNN classifier</strong> for runtime hardware Trojan monitoring. Targets malicious execution that can escape pre-deployment tests.</li>
+              <li>Specified an <strong>FPGA monitor architecture</strong>. Evaluation across workloads, processor configurations and caches remains ongoing.</li>
             </ul>
           </li>
         </ol>
@@ -172,9 +167,8 @@
             <p class="publication-meta">arXiv 2026 · Co-author</p>
             <p class="publication-links"><a href="https://arxiv.org/abs/2602.08701">arXiv</a> <a href="assets/papers/LLM_Enhanced_Wearables.pdf">PDF</a> <a href="projects/wearables.html">Project notes</a></p>
             <ul>
-              <li>Co-developed <strong>plain language WhatsApp health feedback</strong> to make low cost wearable data understandable to users with limited health literacy.</li>
-              <li>Designed a <strong>$12.72 screenless ATmega328P band</strong> and BLE firmware. Combined PPG with temperature and motion sensing.</li>
-              <li>Enabled a <strong>20 participant 96 hour study</strong>. Mean self rated health data comprehension rose from <strong>3.05 to 3.60 out of 5</strong>.</li>
+              <li>Designed a <strong>$12.72 screenless wearable</strong> and BLE firmware for <strong>plain-language WhatsApp health feedback</strong>. Addresses affordability and difficulty interpreting sensor data.</li>
+              <li>Supported a <strong>20-participant 96-hour study</strong>. Mean self-rated health-data comprehension rose from <strong>3.05 to 3.60 out of 5</strong>.</li>
             </ul>
           </li>
           <li>
@@ -182,9 +176,8 @@
             <p class="publication-meta">Preprint · Joint first author</p>
             <p class="publication-links"><a href="projects/watchtower.html">Project notes</a></p>
             <ul>
-              <li>Developed <strong>open set intrusion detection</strong> for edge devices that must identify attacks absent from their training data.</li>
-              <li>Combined a transformer with <strong>28 packet level features</strong> and PROSER. Optimized INT8 inference with TVM on Raspberry Pi 5.</li>
-              <li>Reached <strong>3.82 ms inference latency</strong> and <strong>93.66 percent classification accuracy</strong> on the deployed model.</li>
+              <li>Developed <strong>open-set intrusion detection</strong> for edge devices. Combined a transformer and 28 packet-level features to identify traffic outside known attack classes.</li>
+              <li>Optimized INT8 deployment on <strong>Raspberry Pi 5</strong>. Reported <strong>3.82 ms inference</strong> and <strong>93.66 percent classification accuracy</strong>.</li>
             </ul>
           </li>
         </ol>

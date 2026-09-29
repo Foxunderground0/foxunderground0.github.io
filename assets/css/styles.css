@@ -10,6 +10,17 @@
   box-sizing: border-box;
 }
 
+.detail-copy > details > summary {
+  cursor: pointer;
+  color: var(--link);
+  padding-block: 0.55rem;
+}
+
+.detail-copy > details > summary:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
+}
+
 html {
   scroll-behavior: smooth;
 }

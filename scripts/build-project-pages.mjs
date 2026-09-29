@@ -68,6 +68,15 @@ function localHref(url, prefix = "") {
   return /^https?:|^mailto:/.test(url) ? url : `${prefix}${url}`;
 }
 
+// Emphasis is explicit editorial data. Escape every segment before adding markup.
+function emphasis(value) {
+  return String(value).split(/(\*\*[^*]+\*\*)/g).map((part) =>
+    part.startsWith("**") && part.endsWith("**")
+      ? `<strong>${escapeHtml(part.slice(2, -2))}</strong>`
+      : escapeHtml(part)
+  ).join("");
+}
+
 function documentFor(project) {
   return project.documents?.[0] || (project.document ? { label: "Project document", url: project.document } : null);
 }
@@ -102,7 +111,7 @@ function artifactIcons(project, prefix = "") {
 }
 
 function projectEntry(project, prefix = "") {
-  const search = [project.title, project.summary, project.category, project.status, ...project.tags].join(" ").toLowerCase();
+  const search = [project.title, project.shortTitle, project.summary, project.category, project.status, ...project.tags, ...(project.overview || []), ...project.work, ...project.outcomes].join(" ").replaceAll("**", "").toLowerCase();
   return `<article class="project-entry" data-category="${escapeHtml(project.category)}" data-search="${escapeHtml(search)}">
   <div>
     <div class="project-title-line"><h3><a href="${prefix}projects/${encodeURIComponent(project.id)}.html">${escapeHtml(project.shortTitle || project.title)}</a></h3>${artifactIcons(project, prefix)}</div>
@@ -190,7 +199,7 @@ function projectPage(project) {
   const presentationUrl = presentation ? `${siteUrl}/${presentation.path}` : "";
   const presentationSection = presentation ? `<section class="presentation-section" id="presentation">
   <h2>Presentation</h2>
-  <p><a href="${escapeHtml(localHref(presentation.path, prefix))}" target="_blank" rel="noopener">Open ${escapeHtml(presentation.label)} in PowerPoint for the web</a> · <a href="${escapeHtml(localHref(presentation.path, prefix))}" download>Download PowerPoint file</a></p>
+  <p><a href="https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(presentationUrl)}" target="_blank" rel="noopener">Open ${escapeHtml(presentation.label)} in PowerPoint for the web</a> · <a href="${escapeHtml(localHref(presentation.path, prefix))}" download>Download PowerPoint file</a></p>
   <iframe class="presentation-frame" src="https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(presentationUrl)}" title="${escapeHtml(presentation.label)}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
 </section>` : "";
   const mediaSection = projectMedia.length ? `<section class="media-section" id="media">
@@ -241,10 +250,12 @@ function projectPage(project) {
           ${links ? `<p class="detail-actions">${links}</p>` : ""}
         </header>
         <div class="detail-copy">
+          ${project.overview ? `<section aria-label="Research contribution"><h2>Contribution and results</h2><ul>${project.overview.map((item) => `<li>${emphasis(item)}</li>`).join("")}</ul></section><details><summary>Technical details</summary>` : ""}
           <section><h2>Motivation</h2><p>${escapeHtml(project.problem)}</p></section>
-          <section><h2>Work completed</h2><ul>${project.work.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
+          <section><h2>Implementation and scope</h2><ul>${project.work.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
           <section><h2>Outputs</h2><ul>${project.outcomes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
           ${sourceSection}
+          ${project.overview ? "</details>" : ""}
         </div>
         ${presentationSection}
         ${documentSection}

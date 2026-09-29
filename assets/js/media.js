@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let visible = 0;
     for (const tile of tiles) {
       tile.hidden = !(project === "all" || tile.dataset.project === project) || !(type === "all" || tile.dataset.type === type);
+      if (tile.hidden) stopPreview(tile);
       if (!tile.hidden) visible++;
     }
     if (count) count.textContent = `${visible} item${visible === 1 ? "" : "s"}`;
@@ -49,12 +50,20 @@ document.addEventListener("DOMContentLoaded", () => {
       video.src = video.dataset.videoSrc;
       video.load();
     }
-    video.play().then(() => tile.classList.add("is-playing")).catch(() => {});
+    tile.dataset.previewActive = "true";
+    video.play().then(() => {
+      if (tile.dataset.previewActive !== "true" || tile.hidden || viewer.open) {
+        video.pause();
+        return;
+      }
+      tile.classList.add("is-playing");
+    }).catch(() => {});
   }
 
   function stopPreview(tile) {
     const video = tile.querySelector(".media-hover-video");
     if (!video) return;
+    tile.dataset.previewActive = "false";
     video.pause();
     video.currentTime = 0;
     tile.classList.remove("is-playing");
@@ -81,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function show(link) {
+    tiles.forEach(stopPreview);
     activeLink = link;
     stage.replaceChildren();
     const isVideo = link.dataset.type === "video";
@@ -131,6 +141,9 @@ document.addEventListener("DOMContentLoaded", () => {
     stage.replaceChildren();
     document.body.classList.remove("viewer-open");
     activeLink?.focus({ preventScroll: true });
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) tiles.forEach(stopPreview);
   });
   viewer.addEventListener("keydown", (event) => {
     if (event.target.tagName === "VIDEO") return;

@@ -3,6 +3,10 @@ window.PROJECTS = [
     id: "pitm",
     title: "Programmer in the Middle",
     shortTitle: "PITM",
+    overview: [
+      "Demonstrated **firmware implantation through compromised flash programmers**. Modified USBasp to inject AVR code while returning clean host readback checks.",
+      "**Reverse engineered ST-Link V2** and tested custom programmer firmware on **three target boards**. The work examines a trust gap between reviewed binaries and programmed hardware."
+    ],
     year: "2026 to present",
     category: "Research",
     status: "Manuscript in preparation",
@@ -22,11 +26,11 @@ window.PROJECTS = [
       "Produced a cross architecture experimental plan for evaluating the same trust gap."
     ],
     links: [
-      { label: "Open manuscript", url: "assets/writeups/Programmer_in_the_Middle.pdf" }
+      { label: "Open working draft", url: "assets/writeups/Programmer_in_the_Middle.pdf" }
     ],
     document: "assets/writeups/Programmer_in_the_Middle.pdf",
     documents: [
-      { label: "Programmer in the Middle manuscript", url: "assets/writeups/Programmer_in_the_Middle.pdf" }
+      { label: "Programmer in the Middle working draft", url: "assets/writeups/Programmer_in_the_Middle.pdf" }
     ],
     sources: [
       { label: "NIST IoT device cybersecurity guidance", url: "https://csrc.nist.gov/pubs/ir/8259/a/final" },
@@ -38,6 +42,10 @@ window.PROJECTS = [
     id: "on-chip-monitoring",
     title: "On Chip Behavioral Monitoring",
     shortTitle: "On Chip Monitoring",
+    overview: [
+      "Built a **transaction-trace collection pipeline** and **1D CNN classifier** for runtime hardware Trojan monitoring. The approach targets malicious execution that can escape pre-deployment tests.",
+      "Specified an **FPGA monitor architecture**. Evaluation across workloads, processor configurations and caches remains ongoing."
+    ],
     year: "2026 to present",
     category: "Research",
     status: "Manuscript in preparation",
@@ -57,11 +65,11 @@ window.PROJECTS = [
       "Specified the monitoring architecture. FPGA deployment and generalization evaluation remain planned work."
     ],
     links: [
-      { label: "Open manuscript", url: "assets/writeups/On_Chip_Behavioral_Monitoring.pdf" }
+      { label: "Open early draft", url: "assets/writeups/On_Chip_Behavioral_Monitoring.pdf" }
     ],
     document: "assets/writeups/On_Chip_Behavioral_Monitoring.pdf",
     documents: [
-      { label: "On Chip Behavioral Monitoring manuscript", url: "assets/writeups/On_Chip_Behavioral_Monitoring.pdf" }
+      { label: "On Chip Behavioral Monitoring early draft", url: "assets/writeups/On_Chip_Behavioral_Monitoring.pdf" }
     ],
     sources: []
   },
@@ -69,6 +77,10 @@ window.PROJECTS = [
     id: "pixelpacker",
     title: "PixelPacker",
     shortTitle: "PixelPacker",
+    overview: [
+      "Developed **FPGA-accelerated image compression** for wildlife cameras on limited-bandwidth links. Background-aware latent differencing avoids retransmitting unchanged scenery.",
+      "Reduced the encoder from **28.4 MB to 800 kB** through distillation and INT8 quantization. Implemented an **Artix-7 accelerator** and ESP32 compression path."
+    ],
     year: "2025 to 2026",
     category: "Embedded AI",
     status: "Research project",
@@ -100,6 +112,10 @@ window.PROJECTS = [
     id: "rizz8",
     title: "RIZZ 8",
     shortTitle: "RIZZ 8",
+    overview: [
+      "Independently designed and built an **8-bit Harvard processor** using discrete logic across **eight custom PCBs**.",
+      "Defined the **instruction set** and wrote a **Python assembler**. Executed custom programs on physical hardware, completing the path from architecture to working system."
+    ],
     year: "2025",
     category: "Hardware",
     status: "Completed",
@@ -124,6 +140,10 @@ window.PROJECTS = [
     id: "watchtower",
     title: "WatchTower",
     shortTitle: "WatchTower",
+    overview: [
+      "Developed **open-set intrusion detection** for edge devices, addressing traffic from attacks absent from training data.",
+      "Combined a transformer and 28 packet-level features with INT8 deployment on **Raspberry Pi 5**. Reported **3.82 ms inference** and **93.66 percent classification accuracy**."
+    ],
     year: "2025",
     category: "Embedded AI",
     status: "Preprint",
@@ -148,6 +168,10 @@ window.PROJECTS = [
     id: "cardy",
     title: "CARDY",
     shortTitle: "CARDY",
+    overview: [
+      "Designed **custom hardware and ESP8266 firmware** for a physical computing competition. Integrated local challenges, physical controls and live telemetry.",
+      "Coordinated assembly and testing of **50 devices** used by **50 teams**. Delivered a complete platform from PCB design through event deployment."
+    ],
     year: "2023",
     category: "Hardware",
     status: "Deployed",
@@ -173,12 +197,16 @@ window.PROJECTS = [
     id: "keysiphon",
     title: "KeySiphon",
     shortTitle: "KeySiphon",
+    overview: [
+      "Built a **power-trace acquisition setup** to study RSA leakage on an instrumented ATmega328P.",
+      "Trained a **1D CNN** to classify exponent-bit operations with **93.10 percent validation accuracy**. Connected physical measurement to automated side-channel analysis."
+    ],
     year: "2025",
     category: "Research",
     status: "Completed",
     featured: false,
     tags: ["Side channel", "RSA", "ATmega328P", "1D CNN"],
-    summary: "Automated RSA key recovery from power rail observations of a shared embedded supply.",
+    summary: "RSA exponent-bit classification from power traces on an instrumented ATmega328P prototype.",
     problem: "Cryptographic software can remain mathematically sound while its physical implementation leaks secret dependent activity through shared power infrastructure.",
     work: [
       "Lifted the target supply pin and tuned a 47 ohm shunt network to capture operation level power traces without brownout.",
@@ -187,8 +215,8 @@ window.PROJECTS = [
     ],
     outcomes: [
       "Reached 93.10 percent validation accuracy for operation classification.",
-      "Built an end to end path from physical acquisition to automated secret bit recovery.",
-      "Demonstrated the risk from a malicious device sharing the same power rail."
+      "Connected physical trace acquisition to automated exponent-bit classification.",
+      "Evaluated shared-supply leakage using an instrumented proof of concept. The reported accuracy measures bit classification, not full-key recovery."
     ],
     links: [
       { label: "Open project writeup", url: "assets/writeups/KeySiphon.pdf" }
@@ -203,6 +231,10 @@ window.PROJECTS = [
     id: "motion-coupled",
     title: "Motion-Coupled Sensing: When the State Change Powers Its Own Sensing",
     shortTitle: "Motion Coupled Sensing",
+    overview: [
+      "Co-developed **batteryless sensing hardware and LoRa firmware**. Routine hinge motion supplies the energy for sensing and reporting, removing battery maintenance and idle polling.",
+      "Built a **10,000-actuation stress-test rig** and reduced boot-to-transmission time from **1,530 to under 125 ms**. The team measured **99.3 percent transmission reliability** over 5,945 bin-lid actuations."
+    ],
     year: "2026",
     category: "Research",
     status: "Accepted at IEEE MASS",
@@ -226,6 +258,7 @@ window.PROJECTS = [
     ],
     links: [
       { label: "Read on arXiv", url: "https://arxiv.org/abs/2605.19793" },
+      { label: "Hardware and firmware", url: "https://github.com/SYSNET-LUMS/Batteryless-event-driven-sensing-platform" },
       { label: "Open local paper", url: "assets/papers/Motion_Coupled_Sensing.pdf" }
     ],
     document: "assets/papers/Motion_Coupled_Sensing.pdf",
@@ -239,23 +272,27 @@ window.PROJECTS = [
     id: "kissan-dost",
     title: "Kissan-Dost: Bridging the Last Mile in Smallholder Precision Agriculture with Conversational IoT",
     shortTitle: "Kissan Dost",
+    overview: [
+      "Built the **multi-hop ESP-NOW monitoring mesh** and ESP32 gateway behind **Urdu WhatsApp text and voice guidance**. The system makes farm measurements usable without technical dashboards.",
+      "Deployed sensing hardware at **two sites for 45 days each**. A five-participant pilot found near-daily chatbot use and guidance that informed irrigation decisions."
+    ],
     year: "2026",
     category: "Research",
     status: "Accepted at IEEE DCOSS IoT",
     featured: false,
     tags: ["Precision agriculture", "ESP NOW", "Mesh network", "Conversational IoT"],
     summary: "Urdu WhatsApp text and voice advice grounded in live soil and climate measurements for smallholder farmers.",
-    problem: "Smallholder farmers need actionable local guidance without relying on technical dashboards or continuous internet access.",
+    problem: "Technical dashboards and language barriers make farm sensor data difficult to use. Smallholder farmers need guidance in familiar languages and interfaces.",
     work: [
       "Built the multi hop ESP NOW monitoring mesh that relayed soil and climate measurements to a gateway.",
       "Supported sensing, firmware, and field deployment at two sites.",
       "Connected measured field conditions to a multilingual WhatsApp interface supporting text and voice queries."
     ],
     outcomes: [
-      "The system operated at two field sites for 45 days each.",
+      "The five-participant pilot ran at two field sites for 45 days each.",
       "The mesh extended coverage beyond direct gateway range.",
       "Farmers maintained near daily use and used the guidance to inform irrigation after dashboard engagement faded.",
-      "The system achieved over 90 percent correctness on sensor grounded crop queries.",
+      "Model judges scored correctness above 90 percent on 99 sensor-grounded crop queries.",
       "The work was accepted at IEEE DCOSS IoT 2026."
     ],
     links: [
@@ -273,6 +310,10 @@ window.PROJECTS = [
     id: "wearables",
     title: "LLM Enhanced Wearables",
     shortTitle: "LLM Enhanced Wearables",
+    overview: [
+      "Designed a **$12.72 screenless wearable** and BLE firmware for plain-language WhatsApp health feedback. The system addresses affordability and difficulty interpreting sensor data.",
+      "Supported a **20-participant study** over 96 hours. Mean self-rated health-data comprehension increased from **3.05 to 3.60 out of 5**."
+    ],
     year: "2026",
     category: "Research",
     status: "Preprint",
@@ -292,7 +333,7 @@ window.PROJECTS = [
     links: [
       { label: "Read on arXiv", url: "https://arxiv.org/abs/2602.08701" },
       { label: "Open local paper", url: "assets/papers/LLM_Enhanced_Wearables.pdf" },
-      { label: "Guardian Angel code", url: "https://github.com/nullhypothesis/guardian-angel" }
+      { label: "Guardian Angel code", url: "https://github.com/the-nullhypothesis/Guardian-Angel" }
     ],
     document: "assets/papers/LLM_Enhanced_Wearables.pdf",
     documents: [
@@ -304,6 +345,10 @@ window.PROJECTS = [
     id: "parda",
     title: "PARDA",
     shortTitle: "PARDA",
+    overview: [
+      "Designed **on-device audio privacy** for smart glasses. Combined cross-turn context, retrieval and a distilled **2B model** to redact inferred private attributes and replace speaker voices.",
+      "On **143 held-out conversations**, reduced model-judged leakage from **0.502 to 0.378** while utility rose from 0.875 to 0.900. Evaluated quantized deployment on **Raspberry Pi 5**."
+    ],
     year: "2026",
     category: "Research",
     status: "Submitted manuscript",
@@ -313,12 +358,13 @@ window.PROJECTS = [
     problem: "Smart glasses can reveal bystander identity and private attributes inferred across conversation turns. Local processing must protect that information while retaining useful conversation content.",
     work: [
       "Designed context aware redaction and voice replacement for bystander audio.",
-      "Labeled 717 CANDOR conversations and combined speaker profiles with retrieval and a distilled 2B model trained through preference optimization.",
+      "Built a silver-labeling pipeline for 717 CANDOR conversations. Combined speaker profiles and retrieval with a distilled 2B model trained through preference optimization.",
       "Deployed Q4 inference and ONNX audio processing on Raspberry Pi 5."
     ],
     outcomes: [
       "Produced a first author manuscript submitted to IEEE PerCom 2027.",
-      "Reduced mean privacy leakage from 0.502 to 0.378 on 143 held out conversations with 0.900 utility.",
+      "Reduced model-judged privacy leakage from 0.502 to 0.378 on 143 held-out conversations. Utility increased from 0.875 to 0.900.",
+      "The deployed Q4 model scored 0.400 leakage and 0.902 utility. Full-precision results are reported separately.",
       "The audio front end achieved a 0.77 weighted real time factor. This measurement does not describe the complete pipeline."
     ],
     links: [
@@ -334,6 +380,10 @@ window.PROJECTS = [
     id: "imd-security",
     title: "Pacemaker Security Study",
     shortTitle: "Pacemaker Security",
+    overview: [
+      "Instrumented a laboratory **pacemaker** and built BLE experiments using **HackRF, nRF52840 and ESP32** to study battery-depletion risk.",
+      "Crafted connection attempts extended observed wake time from roughly **2 to 10.8 seconds**. Measured energy per connection to quantify the cost of unauthorized wireless activity."
+    ],
     year: "2026",
     category: "Research",
     status: "Completed study",
@@ -359,6 +409,10 @@ window.PROJECTS = [
     id: "wristband",
     title: "Long Life Maternal Health Wristband",
     shortTitle: "Maternal Health Wristband",
+    overview: [
+      "**Designed and hand-assembled a four-layer nRF52 wristband** for temperature monitoring in maternal-health research in rural Sindh.",
+      "Built the schematic, PCB and firmware as an **end-to-end sensing platform**. Targeted four months per charge for field studies with limited charging access."
+    ],
     year: "2025 to 2026",
     category: "Hardware",
     status: "Research prototype",
@@ -382,6 +436,10 @@ window.PROJECTS = [
     id: "voltage-trace-bench",
     title: "Arbitrary Voltage Trace Replay Bench",
     shortTitle: "Voltage Trace Replay Bench",
+    overview: [
+      "Built an **arbitrary voltage-trace replay bench** using laptop-controlled function generators and amplifiers.",
+      "Made power conditions **repeatable across experiments** on transiently powered devices. Supported SYSNET research including CheckMate."
+    ],
     year: "2024",
     category: "Research",
     status: "SYSNET laboratory infrastructure",
@@ -494,6 +552,10 @@ window.PROJECTS = [
     id: "thermal-codec",
     title: "Lossless Thermal Video Codec",
     shortTitle: "Thermal Codec",
+    overview: [
+      "Co-developed **lossless compression for 16-bit thermal video** using temporal prediction and sensor-noise structure.",
+      "Produced files **15 percent smaller than FFV1 on average** at comparable processing cost. No larger outputs in the tested sets, with a best case of one-third the size."
+    ],
     year: "2025 to 2026",
     category: "Systems",
     status: "Research prototype",
@@ -509,7 +571,7 @@ window.PROJECTS = [
     outcomes: [
       "Produced files 15 percent smaller than FFV1 on average at similar encode and decode cost.",
       "Recorded no regression against FFV1 across the tested sets.",
-      "Reached a best case size reduction of three fold."
+      "The smallest output was one-third the size of FFV1 on the same input."
     ],
     links: [],
     sources: []
@@ -518,6 +580,10 @@ window.PROJECTS = [
     id: "kernel-driver",
     title: "Raspberry Pi Kernel Driver",
     shortTitle: "Kernel Driver",
+    overview: [
+      "Developed a **Linux I2C kernel driver** and userspace device interface for an MPU6050 sensor.",
+      "Optimized register transactions to reach **1,700 samples per second**. Added kernel buffer handling and validation for userspace transfers."
+    ],
     year: "2023",
     category: "Systems",
     status: "Completed",
@@ -593,6 +659,10 @@ window.PROJECTS = [
     id: "buggy-v",
     title: "Buggy V Verification",
     shortTitle: "Buggy V",
+    overview: [
+      "Debugged **RISC-V RTL** and built an architectural compliance workflow using **Sail and Verilator**.",
+      "Our team won **first place** at the Pakistan Semiconductor Summit Hackathon 2026. Set up linker scripts, build targets and test execution during the seven-hour challenge."
+    ],
     year: "2026",
     category: "Hardware",
     status: "Hackathon winner",

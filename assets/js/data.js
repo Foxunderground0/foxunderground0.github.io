@@ -26,11 +26,11 @@ window.PROJECTS = [
       "Produced a cross architecture experimental plan for evaluating the same trust gap."
     ],
     links: [
-      { label: "Open working draft", url: "assets/writeups/Programmer_in_the_Middle.pdf" }
+      { label: "Pre-Release", url: "assets/writeups/Programmer_in_the_Middle.pdf" }
     ],
     document: "assets/writeups/Programmer_in_the_Middle.pdf",
     documents: [
-      { label: "Programmer in the Middle working draft", url: "assets/writeups/Programmer_in_the_Middle.pdf" }
+      { label: "Programmer in the Middle pre-release", url: "assets/writeups/Programmer_in_the_Middle.pdf" }
     ],
     sources: [
       { label: "NIST IoT device cybersecurity guidance", url: "https://csrc.nist.gov/pubs/ir/8259/a/final" },
@@ -65,11 +65,11 @@ window.PROJECTS = [
       "Specified the monitoring architecture. FPGA deployment and generalization evaluation remain planned work."
     ],
     links: [
-      { label: "Open early draft", url: "assets/writeups/On_Chip_Behavioral_Monitoring.pdf" }
+      { label: "Pre-Release", url: "assets/writeups/On_Chip_Behavioral_Monitoring.pdf" }
     ],
     document: "assets/writeups/On_Chip_Behavioral_Monitoring.pdf",
     documents: [
-      { label: "On Chip Behavioral Monitoring early draft", url: "assets/writeups/On_Chip_Behavioral_Monitoring.pdf" }
+      { label: "On Chip Behavioral Monitoring pre-release", url: "assets/writeups/On_Chip_Behavioral_Monitoring.pdf" }
     ],
     sources: []
   },

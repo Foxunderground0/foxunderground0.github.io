@@ -135,6 +135,7 @@ function profile(prefix) {
     <li><a href="mailto:umerirfan1205@gmail.com">Email</a></li>
     <li><a href="https://github.com/Foxunderground0">GitHub</a></li>
     <li><a href="https://www.linkedin.com/in/umer-irfan--">LinkedIn</a></li>
+    <li><a href="https://scholar.google.com/citations?hl=en&amp;user=sa_6OCsAAAAJ">Google Scholar</a></li>
     <li><a href="${prefix}assets/docs/Umer_Irfan_CV.pdf">Curriculum vitae</a></li>
     <li><a href="${prefix}assets/docs/Umer_Irfan_Portfolio.pdf">Extended portfolio</a></li>
   </ul>
@@ -153,6 +154,7 @@ function mobileProfile(prefix) {
     <li><a href="mailto:umerirfan1205@gmail.com">Email</a></li>
     <li><a href="https://github.com/Foxunderground0">GitHub</a></li>
     <li><a href="https://www.linkedin.com/in/umer-irfan--">LinkedIn</a></li>
+    <li><a href="https://scholar.google.com/citations?hl=en&amp;user=sa_6OCsAAAAJ">Google Scholar</a></li>
     <li><a href="${prefix}assets/docs/Umer_Irfan_CV.pdf">CV</a></li>
     <li><a href="${prefix}assets/docs/Umer_Irfan_Portfolio.pdf">Extended portfolio</a></li>
   </ul>

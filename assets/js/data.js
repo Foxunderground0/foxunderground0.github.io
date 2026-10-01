@@ -162,6 +162,10 @@ window.PROJECTS = [
       "Combined open set detection with a deployable edge inference path."
     ],
     links: [],
+    document: "assets/writeups/WatchTower.pdf",
+    documents: [
+      { label: "WatchTower project report", url: "assets/writeups/WatchTower.pdf" }
+    ],
     sources: []
   },
   {

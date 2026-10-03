@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 220" role="img" aria-labelledby="title desc">
+<title id="title">Project X camera firmware flow</title><desc id="desc">A camera device retrieves firmware updates and publishes MQTT heartbeat and error telemetry.</desc>
+<rect width="750" height="220" fill="#f7f8fb"/>
+<g font-family="Arial, sans-serif" text-anchor="middle" fill="#24334a" font-size="17">
+<rect x="34" y="54" width="190" height="90" rx="6" fill="#fff" stroke="#aab7ca"/><text x="129" y="92">Update endpoint</text><text x="129" y="116" font-size="13">Firmware image</text>
+<rect x="280" y="54" width="190" height="90" rx="6" fill="#fff" stroke="#aab7ca"/><text x="375" y="92">ESP32 camera</text><text x="375" y="116" font-size="13">OTA and device state</text>
+<rect x="526" y="54" width="190" height="90" rx="6" fill="#fff" stroke="#aab7ca"/><text x="621" y="92">MQTT broker</text><text x="621" y="116" font-size="13">Heartbeat and errors</text>
+</g>
+<path d="M224 99h56m190 0h56" stroke="#527397" stroke-width="2"/><path d="m274 94 7 5-7 5m239-10 7 5-7 5" fill="#527397"/>
+<text x="375" y="186" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#5a6879">Device-side behavior only. Transport security is not asserted.</text>
+</svg>

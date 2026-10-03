@@ -16,11 +16,16 @@ Push the contents of this folder to the root of a GitHub Pages repository. Enabl
 
 The published site has no deployment build step and no external runtime dependency.
 
-Project content is stored in `assets/js/data.js`. After editing project data, regenerate the crawlable project index and individual HTML pages with:
+Academic project content is stored in `assets/js/data.js`. Professional editorial content is in `scripts/build-editions.mjs`. After editing either, regenerate both editions with:
 
 ```sh
 node scripts/build-project-pages.mjs
+node scripts/build-editions.mjs
 ```
+
+The root site and `/projects/*.html` remain academic for old links. `/academic/` repeats that edition. `/professional/` has its own homepage, index, and static project pages. Both editions share CSS, JavaScript, and media assets. The academic PDF remains under `assets/docs/Umer_Irfan_CV.pdf`; the separate professional PDF is `assets/docs/Umer_Irfan_Professional_CV.pdf`.
+
+The root-level `../todo.txt` tracks source and screenshot material not yet available for publication. Do not copy it into the Pages repository. Never publish API keys, service-account files, private source, or demo-fixture data.
 
 The service worker keeps only the small site shell in its cache. It prefetches at most one HTML page after a visitor hovers over a same-site link for 250 ms. Leaving the link or clicking cancels that request. It does not fetch a page's images, videos, PDFs, or other media speculatively. Gallery thumbnails load as they approach the viewport. Videos stream directly when previewed or opened and are never copied into the service worker cache.
 

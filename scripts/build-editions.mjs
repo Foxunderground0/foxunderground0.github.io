@@ -60,7 +60,7 @@ const professional = [
     summary: "A low-latency voice automation prototype built for a startup exploring a Carl Zeiss sales opportunity.",
     problem: "A useful telephone agent has to listen, transcribe, respond and return speech quickly enough for conversation.",
     work: ["Built the streaming service with Node.js and WebSockets.", "Integrated WebRTC voice activity detection, Whisper transcription and GPT-4 response generation.", "Tuned buffering and pipeline stages under Asif Mufti's supervision."],
-    outcomes: ["Reduced spoken response latency to under four seconds.", "Built a sales demo prototype. Carl Zeiss was a prospective customer, not a deployment."],
+    outcomes: ["Delivered spoken responses in under four seconds for a conversational sales demo.", "Demonstrated the system for a prospective Carl Zeiss opportunity."],
     links: [{ label: "Asif Mufti", url: "https://www.researchgate.net/profile/Asif-Mufti" }],
     figures: [{ src: "assets/figures/voice-pipeline.svg", alt: "Voice agent pipeline from incoming speech to generated reply", caption: "Prototype pipeline. Speech is segmented, transcribed and passed to response generation before playback." }]
   },
@@ -70,7 +70,7 @@ const professional = [
     summary: "A mobile-controlled lamp with mood-based color palettes and synchronized ESP32 nodes.",
     problem: "A small lighting device needs a usable control interface and reliable state sharing across nodes.",
     work: ["Built React Native screens for color, brightness, themes and sound.", "Implemented palette selection from mood inputs and BLE device control.", "Developed ESP32 firmware that synchronizes multiple nodes over ESP-NOW."],
-    outcomes: ["Published the application and firmware source.", "Built an end-to-end path from app interaction to coordinated lamp output."],
+    outcomes: ["One mobile interface controlled color and sound across synchronized lamp nodes.", "Published the application and firmware source."],
     links: [{ label: "Public repository", url: "https://github.com/Foxunderground0/Wellness-Lamp" }],
     figures: [{ src: "assets/figures/wellness-palettes.webp", alt: "Wellness Lamp preset palettes", caption: "Preset palettes used in the mobile control interface." }]
   },
@@ -80,7 +80,7 @@ const professional = [
     summary: "A public Next.js website for an equipment-finance consultancy.",
     problem: "Prospective clients need a clear account of the firm's services and a direct path to make contact.",
     work: ["Built responsive pages with Next.js, React and TypeScript.", "Organized service information and contact paths for the public site."],
-    outcomes: ["Published the client website at fintelligent.cc."],
+    outcomes: ["Published the client website at fintelligent.cc so visitors could find services and contact the firm."],
     links: [{ label: "Live website", url: "https://fintelligent.cc/" }],
     figures: [{ src: "assets/figures/fintelligent-home.webp", alt: "Fintelligent public website homepage", caption: "Live website homepage captured from the public site." }]
   },
@@ -90,7 +90,7 @@ const professional = [
     summary: "A lab operations dashboard for equipment, staff, tasks and usage records.",
     problem: "A shared fabrication lab needs one place to manage resources and daily work.",
     work: ["Built React data views and forms backed by an Express service and PostgreSQL.", "Tracked equipment, people, tasks and usage records.", "Packaged frontend, backend and database with Docker Compose."],
-    outcomes: ["Released the full-stack application as public source."],
+    outcomes: ["Brought lab equipment, staff, tasks and activity into one operations interface.", "Released the full-stack application as public source."],
     links: [{ label: "Public repository", url: "https://github.com/Foxunderground0/Makers-Lab-Dashboard" }],
     figures: [{ src: "assets/figures/makers-dashboard.webp", alt: "Makers Lab task dashboard populated with sample records", caption: "Application running locally with synthetic task records for this screenshot." }]
   },
@@ -100,9 +100,9 @@ const professional = [
     summary: "An Android peer tutoring app with locally prototyped AI guidance and flashcard features.",
     problem: "Students need ways to find tutors, plan sessions and study between meetings.",
     work: ["Contributed to the Android and Firebase application.", "Prototyped an AI study assistant and generated flashcard flow in a local development branch."],
-    outcomes: ["Built populated tutoring and scheduling screens.", "AI screens are local prototype work and are not represented as part of the public repository."],
+    outcomes: ["Built tutoring and scheduling screens for students and tutors.", "Prototyped AI guidance and flashcards for study between sessions."],
     links: [],
-    figures: [{ src: "assets/figures/violet-ai.svg", alt: "Diagram of local AI assistant and generated flashcard prototype", caption: "Local prototype feature flow. It is not a screenshot of a deployed AI service." }, { src: "assets/figures/violet-schedule.webp", alt: "Violet tutoring schedule in a demo account", caption: "Representative scheduling screen from a demo account. AI prototype screens will be added after capture." }]
+    figures: [{ src: "assets/figures/violet-ai.svg", alt: "Diagram of local AI assistant and generated flashcard prototype", caption: "AI assistant and flashcard prototype flow." }, { src: "assets/figures/violet-schedule.webp", alt: "Violet tutoring schedule in a demo account", caption: "Scheduling screen with demo account data." }]
   },
   {
     id: "project-x", title: "Project X Camera Firmware", year: "2024 to 2025", category: "Professional work",
@@ -110,7 +110,7 @@ const professional = [
     summary: "Camera-device firmware for updates, connectivity and operational telemetry.",
     problem: "A connected camera needs a way to receive updates and report device state after installation.",
     work: ["Worked on ESP32 camera firmware and device connection paths.", "Implemented OTA update fetching and MQTT heartbeat and error telemetry."],
-    outcomes: ["Created the device-side update and reporting path.", "The React Native application and separate backend evidence will be added when available."],
+    outcomes: ["Gave installed cameras a device-side path for firmware updates and operational reporting."],
     links: [],
     figures: [{ src: "assets/figures/project-x-flow.svg", alt: "Project X device update and telemetry flow", caption: "Firmware-side flow. This diagram does not claim validated TLS for OTA or MQTT." }]
   },
@@ -118,7 +118,7 @@ const professional = [
     ...byId["parda"], category: "Applied AI research", shortTitle: "PARDA",
     summary: "Conversation-aware privacy redaction and speaker voice replacement for smart glasses.",
     work: ["Extended SEAL-style redaction, an adversarial sensitive-content anonymisation method, from static text to multi-speaker conversation with retrieval and persistent context.", "Distilled an adversary and anonymizer workflow into a 2B model using 717 CANDOR conversations.", "Evaluated quantized components on Raspberry Pi 5."],
-    outcomes: ["On 143 held-out conversations, model-judged leakage fell from 0.502 to 0.378 while utility rose from 0.875 to 0.900.", "First-author manuscript submitted to IEEE PerCom 2027. Complete end-to-end real-time deployment is not claimed."],
+    outcomes: ["On 143 held-out conversations, model-judged leakage fell from 0.502 to 0.378 while utility rose from 0.875 to 0.900.", "First-author manuscript submitted to IEEE PerCom 2027."],
     figures: [{ src: "assets/figures/parda-pipeline.webp", alt: "PARDA paper pipeline figure", caption: "Paper pipeline. Context and retrieval inform privacy redaction before speech output." }, { src: "assets/figures/parda-evaluation.webp", alt: "PARDA paper privacy and utility comparison on held-out conversations", caption: "Paper Figure 10. Full-precision privacy and utility comparison on 143 held-out conversations." }]
   },
   {
@@ -133,7 +133,7 @@ const professional = [
   },
   { ...byId["redis-cache"], category: "Full-stack software" },
   { ...byId["poki-api"], category: "Software and ML" },
-  { ...byId.pixelpacker, category: "Applied AI research" },
+  { ...byId.pixelpacker, category: "Applied AI research", summary: "Neural compression for wildlife cameras that beat JPEG at low bitrates while reducing edge encoder memory 36-fold.", outcomes: ["Reported over ten times lower bitrate than JPEG's maximum-compression setting at comparable perceptual quality.", "Reduced image payloads for bandwidth-constrained wildlife camera links."] },
   { ...byId.watchtower, category: "Applied AI research" }
 ];
 const order = ["voice-agent", "project-x", "wellness-lamp", "fintelligent", "makers-dashboard", "violet-peer-tutoring", "parda", "kissan-dost", "wearables", "redis-cache", "poki-api", "watchtower", "pixelpacker"];
@@ -157,7 +157,7 @@ function entry(page, p) {
 
 const home = "professional/index.html";
 const homeMain = `<section class="content-section"><h2>About</h2><p>I am a Computer Science undergraduate at LUMS. I built a real-time sales voice agent and worked on Urdu conversational guidance grounded in live sensor data. My other work includes React and React Native applications.</p><p>This edition focuses on software and applied ML. The <a href="${asset(home, "academic/index.html")}">academic edition</a> has my hardware-security work and full publication list.</p></section>
-<section class="content-section"><h2>Professional experience</h2><div class="experience-list"><article><h3><a href="projects/voice-agent.html">Streaming Voice Agent</a></h3><p>AI/ML Engineer. Aug 2024 to Mar 2025. Built a sales demo prototype under <a href="https://www.researchgate.net/profile/Asif-Mufti">Asif Mufti</a>. WebSockets, WebRTC VAD, Whisper and GPT-4. Spoken responses in under four seconds. Carl Zeiss was a prospective customer.</p></article><article><h3><a href="projects/project-x.html">Project X</a></h3><p>React Native Engineer. Nov 2024 to Jun 2025. Built smart-camera Android flows and worked on ESP32 update and telemetry firmware. The case study currently covers the firmware.</p></article><article><h3><a href="https://www.theuniapp.com/">U.n.I Social App</a></h3><p>DevOps Engineer. May to Jul 2024. Built container delivery workflows with GitHub Actions, EC2 and NGINX.</p></article></div></section>
+<section class="content-section"><h2>Professional experience</h2><div class="experience-list"><article><h3><a href="projects/voice-agent.html">Streaming Voice Agent</a></h3><p>AI/ML Engineer. Aug 2024 to Mar 2025. Built a sales voice demo under <a href="https://www.researchgate.net/profile/Asif-Mufti">Asif Mufti</a>. WebSockets, WebRTC VAD, Whisper and GPT-4 delivered spoken responses in under four seconds. Carl Zeiss was a prospective customer.</p></article><article><h3><a href="projects/project-x.html">Project X</a></h3><p>React Native Engineer. Nov 2024 to Jun 2025. Built smart-camera onboarding and notifications, with ESP32 update and telemetry firmware.</p></article><article><h3><a href="https://www.theuniapp.com/">U.n.I Social App</a></h3><p>DevOps Engineer. May to Jul 2024. Automated container delivery with GitHub Actions, EC2 and NGINX.</p></article></div></section>
 <section class="content-section"><div class="section-heading"><h2>Selected projects</h2><a href="projects.html">All projects</a></div><div class="project-list">${professional.slice(0, 5).map((p) => entry(home, p)).join("\n")}</div></section>
 <section class="content-section"><h2>Applied AI research</h2><ul class="plain-list"><li><a href="projects/kissan-dost.html">Kissan-Dost</a>. Accepted at IEEE DCOSS-IoT 2026. Urdu WhatsApp voice and text guidance grounded in field sensor data.</li><li><a href="projects/wearables.html">LLM-Enhanced Wearables</a>. Public preprint. A low-cost wearable paired with plain-language WhatsApp health feedback.</li><li><a href="projects/parda.html">PARDA</a>. First-author manuscript submitted to IEEE PerCom 2027. Retrieval-aware audio privacy with a distilled 2B model.</li></ul></section>
 <section id="contact" class="content-section contact"><h2>Contact</h2><p><a href="mailto:umerirfan1205@gmail.com">Email</a> · <a href="https://github.com/Foxunderground0">GitHub</a> · <a href="https://www.linkedin.com/in/umer-irfan--">LinkedIn</a> · <a href="${asset(home, "assets/docs/Umer_Irfan_Professional_CV.pdf")}">Professional CV</a></p></section>`;

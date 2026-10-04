@@ -928,6 +928,19 @@ p {
   border: 1px solid #aaa;
 }
 
+.professional-project-group + .professional-project-group {
+  margin-top: 28px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.project-group-heading {
+  margin: 12px 0 8px;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .media-section {
   margin: 36px 0;
 }

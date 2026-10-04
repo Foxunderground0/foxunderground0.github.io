@@ -24,6 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!entry.hidden) visibleCount += 1;
     }
 
+    for (const group of list.querySelectorAll(".professional-project-group")) {
+      group.hidden = !group.querySelector(".project-entry:not([hidden])");
+    }
+
     count.textContent = `${visibleCount} project${visibleCount === 1 ? "" : "s"}`;
     empty.hidden = visibleCount !== 0;
   }

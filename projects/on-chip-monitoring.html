@@ -77,6 +77,11 @@
           <p class="project-tags">Hardware security · 1D CNN · FPGA · RISC V</p>
           <p class="detail-actions"><a href="../assets/writeups/On_Chip_Behavioral_Monitoring.pdf">Pre-Release</a></p>
         </header>
+        <section class="document-section featured-artifact" id="documents">
+  <h2>Documents</h2>
+  <ul class="document-list"><li><a href="../assets/writeups/On_Chip_Behavioral_Monitoring.pdf">On Chip Behavioral Monitoring pre-release</a></li></ul>
+  <iframe class="document-frame" src="../assets/writeups/On_Chip_Behavioral_Monitoring.pdf" title="On Chip Behavioral Monitoring document" loading="lazy"></iframe>
+</section>
         <div class="detail-copy">
           <section aria-label="Research contribution"><h2>Contribution and results</h2><ul><li>Built a <strong>transaction-trace collection pipeline</strong> and <strong>1D CNN classifier</strong> for runtime hardware Trojan monitoring. The approach targets malicious execution that can escape pre-deployment tests.</li><li>Specified an <strong>FPGA monitor architecture</strong>. Evaluation across workloads, processor configurations and caches remains ongoing.</li></ul></section>
           <section><h2>Motivation</h2><p>Rare trigger hardware Trojans can remain dormant during bounded predeployment testing. Runtime monitoring offers another chance to identify behavior that departs from an expected execution profile.</p></section>
@@ -84,12 +89,6 @@
           <section><h2>Outputs</h2><ul><li>Created a repeatable trace collection and labeling pipeline.</li><li>Developed a 1D CNN classifier for transaction level behavior.</li><li>Specified the monitoring architecture. FPGA deployment and generalization evaluation remain planned work.</li></ul></section>
 
         </div>
-
-        <section class="document-section">
-  <h2>Documents</h2>
-  <ul class="document-list"><li><a href="../assets/writeups/On_Chip_Behavioral_Monitoring.pdf">On Chip Behavioral Monitoring pre-release</a></li></ul>
-  <iframe class="document-frame" src="../assets/writeups/On_Chip_Behavioral_Monitoring.pdf" title="On Chip Behavioral Monitoring document" loading="lazy"></iframe>
-</section>
 
       </article>
       <section class="content-section"><h2>Related projects</h2><div class="project-list"><article class="project-entry" data-category="Research" data-search="programmer in the middle pitm a firmware supply chain attack that treats flash programming equipment as an untrusted stage after compilation and code review. research manuscript in preparation firmware security avr st link ghidra demonstrated firmware implantation through compromised flash programmers. modified usbasp to inject avr code while returning clean host readback checks. reverse engineered st-link v2 and tested custom programmer firmware on three target boards. the work examines a trust gap between reviewed binaries and programmed hardware. modified usbasp firmware to hijack the avr reset vector and inject a firmware stub during programming. implemented readback spoofing so the host receives the expected bytes during verification. reverse engineered st link v2 firmware and tested custom programmer firmware on three target boards. planned further experiments across stm32 and msp430 programming architectures. demonstrated a complete path from trusted input firmware to altered target execution. showed that programmer side manipulation can survive routine host readback checks. produced a cross architecture experimental plan for evaluating the same trust gap.">

@@ -853,6 +853,23 @@ p {
   border-top: 1px solid var(--line);
 }
 
+.featured-artifact {
+  margin: 0 0 34px;
+  padding: 0;
+  border: 0;
+}
+
+.detail-header + .featured-artifact {
+  margin-top: -14px;
+}
+
+.featured-artifact h2 {
+  margin: 0 0 10px;
+  padding: 0;
+  border: 0;
+  font-size: 22px;
+}
+
 .document-list {
   margin: 0 0 16px;
   padding-left: 20px;

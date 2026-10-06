@@ -77,6 +77,11 @@
           <p class="project-tags">Firmware security · AVR · ST Link · Ghidra</p>
           <p class="detail-actions"><a href="../../assets/writeups/Programmer_in_the_Middle.pdf">Pre-Release</a></p>
         </header>
+        <section class="document-section featured-artifact" id="documents">
+  <h2>Documents</h2>
+  <ul class="document-list"><li><a href="../../assets/writeups/Programmer_in_the_Middle.pdf">Programmer in the Middle pre-release</a></li></ul>
+  <iframe class="document-frame" src="../../assets/writeups/Programmer_in_the_Middle.pdf" title="Programmer in the Middle document" loading="lazy"></iframe>
+</section>
         <div class="detail-copy">
           <section aria-label="Research contribution"><h2>Contribution and results</h2><ul><li>Demonstrated <strong>firmware implantation through compromised flash programmers</strong>. Modified USBasp to inject AVR code while returning clean host readback checks.</li><li><strong>Reverse engineered ST-Link V2</strong> and tested custom programmer firmware on <strong>three target boards</strong>. The work examines a trust gap between reviewed binaries and programmed hardware.</li></ul></section>
           <section><h2>Motivation</h2><p>Firmware checks often stop before the programmer touches the target. A compromised programmer can change the binary at the last trusted step and can also interfere with readback verification.</p></section>
@@ -84,12 +89,6 @@
           <section><h2>Outputs</h2><ul><li>Demonstrated a complete path from trusted input firmware to altered target execution.</li><li>Showed that programmer side manipulation can survive routine host readback checks.</li><li>Produced a cross architecture experimental plan for evaluating the same trust gap.</li></ul></section>
           <section><h2>Selected sources</h2><ul class="source-list"><li><a href="https://csrc.nist.gov/pubs/ir/8259/a/final">NIST IoT device cybersecurity guidance</a></li><li><a href="https://www.etsi.org/deliver/etsi_en/303600_303699/303645/03.01.03_60/en_303645v030103p.pdf">ETSI consumer IoT security standard</a></li><li><a href="https://www.enisa.europa.eu/publications/threat-landscape-for-supply-chain-attacks">ENISA supply chain threat landscape</a></li></ul></section>
         </div>
-
-        <section class="document-section">
-  <h2>Documents</h2>
-  <ul class="document-list"><li><a href="../../assets/writeups/Programmer_in_the_Middle.pdf">Programmer in the Middle pre-release</a></li></ul>
-  <iframe class="document-frame" src="../../assets/writeups/Programmer_in_the_Middle.pdf" title="Programmer in the Middle document" loading="lazy"></iframe>
-</section>
         <section class="media-section" id="media">
   <div class="section-heading"><h2>Photos and videos</h2><a href="../gallery.html?project=pitm">Gallery</a></div>
   <div class="media-grid project-media"><figure class="media-tile" data-project="pitm" data-type="image">

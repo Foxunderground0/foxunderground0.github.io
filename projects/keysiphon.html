@@ -77,6 +77,11 @@
           <p class="project-tags">Side channel · RSA · ATmega328P · 1D CNN</p>
           <p class="detail-actions"><a href="../assets/writeups/KeySiphon.pdf">Open project writeup</a></p>
         </header>
+        <section class="document-section featured-artifact" id="documents">
+  <h2>Documents</h2>
+  <ul class="document-list"><li><a href="../assets/writeups/KeySiphon.pdf">KeySiphon writeup</a></li></ul>
+  <iframe class="document-frame" src="../assets/writeups/KeySiphon.pdf" title="KeySiphon document" loading="lazy"></iframe>
+</section>
         <div class="detail-copy">
           <section aria-label="Research contribution"><h2>Contribution and results</h2><ul><li>Built a <strong>power-trace acquisition setup</strong> to study RSA leakage on an instrumented ATmega328P.</li><li>Trained a <strong>1D CNN</strong> to classify exponent-bit operations with <strong>93.10 percent validation accuracy</strong>. Connected physical measurement to automated side-channel analysis.</li></ul></section>
           <section><h2>Motivation</h2><p>Cryptographic software can remain mathematically sound while its physical implementation leaks secret dependent activity through shared power infrastructure.</p></section>
@@ -84,12 +89,6 @@
           <section><h2>Outputs</h2><ul><li>Reached 93.10 percent validation accuracy for operation classification.</li><li>Connected physical trace acquisition to automated exponent-bit classification.</li><li>Evaluated shared-supply leakage using an instrumented proof of concept. The reported accuracy measures bit classification, not full-key recovery.</li></ul></section>
 
         </div>
-
-        <section class="document-section">
-  <h2>Documents</h2>
-  <ul class="document-list"><li><a href="../assets/writeups/KeySiphon.pdf">KeySiphon writeup</a></li></ul>
-  <iframe class="document-frame" src="../assets/writeups/KeySiphon.pdf" title="KeySiphon document" loading="lazy"></iframe>
-</section>
 
       </article>
       <section class="content-section"><h2>Related projects</h2><div class="project-list"><article class="project-entry" data-category="Research" data-search="programmer in the middle pitm a firmware supply chain attack that treats flash programming equipment as an untrusted stage after compilation and code review. research manuscript in preparation firmware security avr st link ghidra demonstrated firmware implantation through compromised flash programmers. modified usbasp to inject avr code while returning clean host readback checks. reverse engineered st-link v2 and tested custom programmer firmware on three target boards. the work examines a trust gap between reviewed binaries and programmed hardware. modified usbasp firmware to hijack the avr reset vector and inject a firmware stub during programming. implemented readback spoofing so the host receives the expected bytes during verification. reverse engineered st link v2 firmware and tested custom programmer firmware on three target boards. planned further experiments across stm32 and msp430 programming architectures. demonstrated a complete path from trusted input firmware to altered target execution. showed that programmer side manipulation can survive routine host readback checks. produced a cross architecture experimental plan for evaluating the same trust gap.">

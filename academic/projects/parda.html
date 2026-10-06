@@ -77,6 +77,11 @@
           <p class="project-tags">Audio privacy · Smart glasses · On device AI · Small language models</p>
           <p class="detail-actions"><a href="../../assets/writeups/PARDA.pdf">Open submitted manuscript</a></p>
         </header>
+        <section class="document-section featured-artifact" id="documents">
+  <h2>Documents</h2>
+  <ul class="document-list"><li><a href="../../assets/writeups/PARDA.pdf">PARDA submitted manuscript</a></li></ul>
+  <iframe class="document-frame" src="../../assets/writeups/PARDA.pdf" title="PARDA document" loading="lazy"></iframe>
+</section>
         <div class="detail-copy">
           <section aria-label="Research contribution"><h2>Contribution and results</h2><ul><li>Designed <strong>on-device audio privacy</strong> for smart glasses. Combined cross-turn context, retrieval and a distilled <strong>2B model</strong> to redact inferred private attributes and replace speaker voices.</li><li>On <strong>143 held-out conversations</strong>, reduced model-judged leakage from <strong>0.502 to 0.378</strong> while utility rose from 0.875 to 0.900. Evaluated quantized deployment on <strong>Raspberry Pi 5</strong>.</li></ul></section>
           <section><h2>Motivation</h2><p>Smart glasses can reveal bystander identity and private attributes inferred across conversation turns. Local processing must protect that information while retaining useful conversation content.</p></section>
@@ -84,12 +89,6 @@
           <section><h2>Outputs</h2><ul><li>Produced a first author manuscript submitted to IEEE PerCom 2027.</li><li>Reduced model-judged privacy leakage from 0.502 to 0.378 on 143 held-out conversations. Utility increased from 0.875 to 0.900.</li><li>The deployed Q4 model scored 0.400 leakage and 0.902 utility. Full-precision results are reported separately.</li><li>The audio front end achieved a 0.77 weighted real time factor. This measurement does not describe the complete pipeline.</li></ul></section>
 
         </div>
-
-        <section class="document-section">
-  <h2>Documents</h2>
-  <ul class="document-list"><li><a href="../../assets/writeups/PARDA.pdf">PARDA submitted manuscript</a></li></ul>
-  <iframe class="document-frame" src="../../assets/writeups/PARDA.pdf" title="PARDA document" loading="lazy"></iframe>
-</section>
 
       </article>
       <section class="content-section"><h2>Related projects</h2><div class="project-list"><article class="project-entry" data-category="Research" data-search="programmer in the middle pitm a firmware supply chain attack that treats flash programming equipment as an untrusted stage after compilation and code review. research manuscript in preparation firmware security avr st link ghidra demonstrated firmware implantation through compromised flash programmers. modified usbasp to inject avr code while returning clean host readback checks. reverse engineered st-link v2 and tested custom programmer firmware on three target boards. the work examines a trust gap between reviewed binaries and programmed hardware. modified usbasp firmware to hijack the avr reset vector and inject a firmware stub during programming. implemented readback spoofing so the host receives the expected bytes during verification. reverse engineered st link v2 firmware and tested custom programmer firmware on three target boards. planned further experiments across stm32 and msp430 programming architectures. demonstrated a complete path from trusted input firmware to altered target execution. showed that programmer side manipulation can survive routine host readback checks. produced a cross architecture experimental plan for evaluating the same trust gap.">

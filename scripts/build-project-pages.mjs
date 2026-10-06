@@ -199,7 +199,7 @@ function projectPage(project) {
   const projectMedia = prioritizeVideos(galleryMedia.filter((item) => item.project === project.id));
   const presentation = project.presentation;
   const presentationUrl = presentation ? `${siteUrl}/${presentation.path}` : "";
-  const presentationSection = presentation ? `<section class="presentation-section" id="presentation">
+  const presentationSection = presentation ? `<section class="presentation-section featured-artifact" id="presentation">
   <h2>Presentation</h2>
   <p><a href="https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(presentationUrl)}" target="_blank" rel="noopener">Open ${escapeHtml(presentation.label)} in PowerPoint for the web</a> · <a href="${escapeHtml(localHref(presentation.path, prefix))}" download>Download PowerPoint file</a></p>
   <iframe class="presentation-frame" src="https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(presentationUrl)}" title="${escapeHtml(presentation.label)}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -208,12 +208,16 @@ function projectPage(project) {
   <div class="section-heading"><h2>Photos and videos</h2><a href="../gallery.html?project=${encodeURIComponent(project.id)}">Gallery</a></div>
   <div class="media-grid project-media">${projectMedia.map((item) => mediaTile(item, prefix)).join("\n")}</div>
 </section>` : "";
-  const documentSection = documents.length ? `<section class="document-section">
+  const documentSection = documents.length ? `<section class="document-section featured-artifact" id="documents">
   <h2>Documents</h2>
   <ul class="document-list">${documents.map((document) => `<li><a href="${escapeHtml(localHref(document.url, prefix))}">${escapeHtml(document.label)}</a></li>`).join("")}</ul>
   <iframe class="document-frame" src="${escapeHtml(localHref(documents[0].url, prefix))}" title="${escapeHtml(project.title)} document" loading="lazy"></iframe>
 </section>` : "";
   const sourceSection = sources.length ? `<section><h2>Selected sources</h2><ul class="source-list">${sources.map((source) => `<li><a href="${escapeHtml(source.url)}">${escapeHtml(source.label)}</a></li>`).join("")}</ul></section>` : "";
+  const featuredArtifact = [presentationSection, documentSection].filter(Boolean).join("\n        ");
+  const artifactBeforeCopy = featuredArtifact ? `\n        ${featuredArtifact}` : "";
+  // Preserve the generated markup of projects without an artifact.
+  const emptyArtifactSlots = featuredArtifact ? "" : "\n        \n        ";
 
   return `<!doctype html>
 <html lang="en">
@@ -250,16 +254,14 @@ function projectPage(project) {
           <p class="detail-meta">${[project.year, project.status, project.category].filter(Boolean).map((value) => `<span>${escapeHtml(value)}</span>`).join("")}</p>
           <p class="project-tags">${project.tags.map(escapeHtml).join(" · ")}</p>
           ${links ? `<p class="detail-actions">${links}</p>` : ""}
-        </header>
+        </header>${artifactBeforeCopy}
         <div class="detail-copy">
           ${project.overview ? `<section aria-label="Research contribution"><h2>Contribution and results</h2><ul>${project.overview.map((item) => `<li>${emphasis(item)}</li>`).join("")}</ul></section>` : ""}
           <section><h2>Motivation</h2><p>${escapeHtml(project.problem)}</p></section>
           <section><h2>Implementation and scope</h2><ul>${project.work.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
           <section><h2>Outputs</h2><ul>${project.outcomes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
           ${sourceSection}
-        </div>
-        ${presentationSection}
-        ${documentSection}
+        </div>${emptyArtifactSlots}
         ${mediaSection}
       </article>
       ${related.length ? `<section class="content-section"><h2>Related projects</h2><div class="project-list">${related.map((item) => projectEntry(item, prefix)).join("\n")}</div></section>` : ""}

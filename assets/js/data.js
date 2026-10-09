@@ -74,6 +74,42 @@ window.PROJECTS = [
     sources: []
   },
   {
+    id: "protected-media-containers",
+    title: "Protected Media Containers",
+    shortTitle: "Protected Media Containers",
+    overview: [
+      "Exploring **media use without plaintext possession**. Camera and microphone content would remain in protected execution while a compromised Android OS handles storage and application requests.",
+      "The early draft defines a **policy-carrying media object** and separates protected rendering, typed inference results, protected computation and deliberate export. Prototype work and evaluation are ongoing."
+    ],
+    year: "Sept 2026 to present",
+    category: "Research",
+    status: "Manuscript in preparation",
+    featured: true,
+    tags: ["Trusted execution environments", "Android security", "Media privacy", "Protected computation"],
+    summary: "A trusted-execution design for using camera and microphone media without exposing its plaintext to a compromised mobile OS.",
+    problem: "Mobile apps often receive raw media even when they only need to display, forward or process it. If Android is compromised, ordinary app permissions cannot keep that plaintext confidential.",
+    work: [
+      "Defined a protected media container that carries encrypted content, metadata and a policy across storage and application handoffs.",
+      "Separated content-agnostic operations from typed inference results and application-specific computation inside protected modules.",
+      "Specified attested transfer to another protected device and authenticated export to an authorized external service."
+    ],
+    outcomes: [
+      "Completed an early threat model and object-level design in a manuscript draft.",
+      "Local prototype, remote protocol tests and evaluation remain in progress."
+    ],
+    links: [
+      { label: "Advisor Abdullah Imran", url: "https://abd134.github.io/" },
+      { label: "Abdullah Imran on Google Scholar", url: "https://scholar.google.com/citations?user=Icj3plYAAAAJ&hl=en" },
+      { label: "Advisor Dr. Muhammad Fareed Zaffar", url: "https://lums.edu.pk/lums_employee/422" },
+      { label: "Fareed Zaffar email", url: "mailto:fareed.zaffar@lums.edu.pk" }
+    ],
+    document: "assets/writeups/Protected_Media_Containers_Early_Draft.pdf",
+    documents: [
+      { label: "Protected Media Containers early draft", url: "assets/writeups/Protected_Media_Containers_Early_Draft.pdf" }
+    ],
+    sources: []
+  },
+  {
     id: "pixelpacker",
     title: "PixelPacker",
     shortTitle: "PixelPacker",

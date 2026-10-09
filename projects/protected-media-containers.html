@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Context aware audio redaction and voice replacement for smart glasses using a compact on device language model.">
-  <meta name="keywords" content="Audio privacy, Smart glasses, On device AI, Small language models">
+  <meta name="description" content="A trusted-execution design for using camera and microphone media without exposing its plaintext to a compromised mobile OS.">
+  <meta name="keywords" content="Trusted execution environments, Android security, Media privacy, Protected computation">
   <meta name="theme-color" content="#ffffff">
   <meta name="site-root" content="../">
-  <link rel="canonical" href="https://foxunderground0.github.io/projects/parda.html">
+  <link rel="canonical" href="https://foxunderground0.github.io/projects/protected-media-containers.html">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="PARDA | Umer Irfan">
-  <meta property="og:description" content="Context aware audio redaction and voice replacement for smart glasses using a compact on device language model.">
-  <title>PARDA | Umer Irfan</title>
+  <meta property="og:title" content="Protected Media Containers | Umer Irfan">
+  <meta property="og:description" content="A trusted-execution design for using camera and microphone media without exposing its plaintext to a compromised mobile OS.">
+  <title>Protected Media Containers | Umer Irfan</title>
   <link rel="preload" href="../assets/css/styles.css" as="style">
   <link rel="preload" href="../assets/images/profile.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="../assets/css/styles.css">
@@ -71,22 +71,22 @@
       <p><a href="../projects.html">Back to projects</a></p>
       <article>
         <header class="detail-header">
-          <div class="project-title-line detail-title-line"><h1>PARDA</h1><span class="artifact-links"><a class="artifact-icon" href="../assets/writeups/PARDA.pdf" title="PDF or writeup available" aria-label="Open PDF or writeup"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3.5"/></svg></a></span></div>
-          <p class="detail-lead">Context aware audio redaction and voice replacement for smart glasses using a compact on device language model.</p>
-          <p class="detail-meta"><span>2026</span><span>Submitted manuscript</span><span>Research</span></p>
-          <p class="project-tags">Audio privacy · Smart glasses · On device AI · Small language models</p>
-          <p class="detail-actions"><a href="../assets/writeups/PARDA.pdf">Open submitted manuscript</a></p>
+          <div class="project-title-line detail-title-line"><h1>Protected Media Containers</h1><span class="artifact-links"><a class="artifact-icon" href="../assets/writeups/Protected_Media_Containers_Early_Draft.pdf" title="PDF or writeup available" aria-label="Open PDF or writeup"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3.5"/></svg></a></span></div>
+          <p class="detail-lead">A trusted-execution design for using camera and microphone media without exposing its plaintext to a compromised mobile OS.</p>
+          <p class="detail-meta"><span>Sept 2026 to present</span><span>Manuscript in preparation</span><span>Research</span></p>
+          <p class="project-tags">Trusted execution environments · Android security · Media privacy · Protected computation</p>
+          <p class="detail-actions"><a href="https://abd134.github.io/">Advisor Abdullah Imran</a> <a href="https://scholar.google.com/citations?user=Icj3plYAAAAJ&amp;hl=en">Abdullah Imran on Google Scholar</a> <a href="https://lums.edu.pk/lums_employee/422">Advisor Dr. Muhammad Fareed Zaffar</a> <a href="mailto:fareed.zaffar@lums.edu.pk">Fareed Zaffar email</a></p>
         </header>
         <section class="document-section featured-artifact" id="documents">
   <h2>Documents</h2>
-  <ul class="document-list"><li><a href="../assets/writeups/PARDA.pdf">PARDA submitted manuscript</a></li></ul>
-  <iframe class="document-frame" src="../assets/writeups/PARDA.pdf" title="PARDA document" loading="lazy"></iframe>
+  <ul class="document-list"><li><a href="../assets/writeups/Protected_Media_Containers_Early_Draft.pdf">Protected Media Containers early draft</a></li></ul>
+  <iframe class="document-frame" src="../assets/writeups/Protected_Media_Containers_Early_Draft.pdf" title="Protected Media Containers document" loading="lazy"></iframe>
 </section>
         <div class="detail-copy">
-          <section aria-label="Research contribution"><h2>Contribution and results</h2><ul><li>Designed <strong>on-device audio privacy</strong> for smart glasses. Combined cross-turn context, retrieval and a distilled <strong>2B model</strong> to redact inferred private attributes and replace speaker voices.</li><li>On <strong>143 held-out conversations</strong>, reduced model-judged leakage from <strong>0.502 to 0.378</strong> while utility rose from 0.875 to 0.900. Evaluated quantized deployment on <strong>Raspberry Pi 5</strong>.</li></ul></section>
-          <section><h2>Motivation</h2><p>Smart glasses can reveal bystander identity and private attributes inferred across conversation turns. Local processing must protect that information while retaining useful conversation content.</p></section>
-          <section><h2>Implementation and scope</h2><ul><li>Designed context aware redaction and voice replacement for bystander audio.</li><li>Built a silver-labeling pipeline for 717 CANDOR conversations. Combined speaker profiles and retrieval with a distilled 2B model trained through preference optimization.</li><li>Deployed Q4 inference and ONNX audio processing on Raspberry Pi 5.</li></ul></section>
-          <section><h2>Outputs</h2><ul><li>Produced a first author manuscript submitted to IEEE PerCom 2027.</li><li>Reduced model-judged privacy leakage from 0.502 to 0.378 on 143 held-out conversations. Utility increased from 0.875 to 0.900.</li><li>The deployed Q4 model scored 0.400 leakage and 0.902 utility. Full-precision results are reported separately.</li><li>The audio front end achieved a 0.77 weighted real time factor. This measurement does not describe the complete pipeline.</li></ul></section>
+          <section aria-label="Research contribution"><h2>Contribution and results</h2><ul><li>Exploring <strong>media use without plaintext possession</strong>. Camera and microphone content would remain in protected execution while a compromised Android OS handles storage and application requests.</li><li>The early draft defines a <strong>policy-carrying media object</strong> and separates protected rendering, typed inference results, protected computation and deliberate export. Prototype work and evaluation are ongoing.</li></ul></section>
+          <section><h2>Motivation</h2><p>Mobile apps often receive raw media even when they only need to display, forward or process it. If Android is compromised, ordinary app permissions cannot keep that plaintext confidential.</p></section>
+          <section><h2>Implementation and scope</h2><ul><li>Defined a protected media container that carries encrypted content, metadata and a policy across storage and application handoffs.</li><li>Separated content-agnostic operations from typed inference results and application-specific computation inside protected modules.</li><li>Specified attested transfer to another protected device and authenticated export to an authorized external service.</li></ul></section>
+          <section><h2>Outputs</h2><ul><li>Completed an early threat model and object-level design in a manuscript draft.</li><li>Local prototype, remote protocol tests and evaluation remain in progress.</li></ul></section>
 
         </div>
 
@@ -107,13 +107,13 @@
   </div>
   <div class="project-entry-meta">2026 to present<br>Research</div>
 </article>
-<article class="project-entry" data-category="Research" data-search="protected media containers protected media containers a trusted-execution design for using camera and microphone media without exposing its plaintext to a compromised mobile os. research manuscript in preparation trusted execution environments android security media privacy protected computation exploring media use without plaintext possession. camera and microphone content would remain in protected execution while a compromised android os handles storage and application requests. the early draft defines a policy-carrying media object and separates protected rendering, typed inference results, protected computation and deliberate export. prototype work and evaluation are ongoing. defined a protected media container that carries encrypted content, metadata and a policy across storage and application handoffs. separated content-agnostic operations from typed inference results and application-specific computation inside protected modules. specified attested transfer to another protected device and authenticated export to an authorized external service. completed an early threat model and object-level design in a manuscript draft. local prototype, remote protocol tests and evaluation remain in progress.">
+<article class="project-entry" data-category="Research" data-search="keysiphon keysiphon rsa exponent-bit classification from power traces on an instrumented atmega328p prototype. research completed side channel rsa atmega328p 1d cnn built a power-trace acquisition setup to study rsa leakage on an instrumented atmega328p. trained a 1d cnn to classify exponent-bit operations with 93.10 percent validation accuracy. connected physical measurement to automated side-channel analysis. lifted the target supply pin and tuned a 47 ohm shunt network to capture operation level power traces without brownout. collected traces from square and multiply operations on an atmega328p rsa implementation. trained a 1d cnn to distinguish the cryptographic operations in noisy traces. reached 93.10 percent validation accuracy for operation classification. connected physical trace acquisition to automated exponent-bit classification. evaluated shared-supply leakage using an instrumented proof of concept. the reported accuracy measures bit classification, not full-key recovery.">
   <div>
-    <div class="project-title-line"><h3><a href="../projects/protected-media-containers.html">Protected Media Containers</a></h3><span class="artifact-links"><a class="artifact-icon" href="../assets/writeups/Protected_Media_Containers_Early_Draft.pdf" title="PDF or writeup available" aria-label="Open PDF or writeup"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3.5"/></svg></a></span></div>
-    <p>A trusted-execution design for using camera and microphone media without exposing its plaintext to a compromised mobile OS.</p>
-    <p class="project-tags">Trusted execution environments · Android security · Media privacy · Protected computation</p>
+    <div class="project-title-line"><h3><a href="../projects/keysiphon.html">KeySiphon</a></h3><span class="artifact-links"><a class="artifact-icon" href="../assets/writeups/KeySiphon.pdf" title="PDF or writeup available" aria-label="Open PDF or writeup"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3.5"/></svg></a></span></div>
+    <p>RSA exponent-bit classification from power traces on an instrumented ATmega328P prototype.</p>
+    <p class="project-tags">Side channel · RSA · ATmega328P · 1D CNN</p>
   </div>
-  <div class="project-entry-meta">Sept 2026 to present<br>Research</div>
+  <div class="project-entry-meta">2025<br>Research</div>
 </article></div></section>
     </main>
   </div>
